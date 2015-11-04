@@ -18,6 +18,13 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = (dt*this.speed) + this.x;
+
+    if (player.x < this.x + 100 & player.x > this.x - 50){
+        if (player.y > this.y - 50 & player.y < this.y + 50){
+            player.reset();
+        };
+    };
+
     if (this.x > 600) {
         this.x = (-400)*Math.random();
     };
@@ -72,6 +79,15 @@ PlayerObj.prototype.handleInput = function(input){
             }
             break;
     }
+
+    // for (enemy in allEnemies){
+    //     console.log(allEnemies[enemy].x);
+    //     if (this.x < allEnemies[enemy].x + 50 & this.x > allEnemies[enemy].x - 50){
+    //         if (this.y > allEnemies[enemy].y - 50 * this.y < allEnemies[enemy].y + 50){
+    //             this.reset();
+    //         };
+    //     };
+    // };
 
     console.log("x" + this.x);
     console.log("y" + this.y);
