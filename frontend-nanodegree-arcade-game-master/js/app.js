@@ -8,7 +8,7 @@ var Enemy = function(x, y) {
     this.sprite = "images/enemy-bug.png";
     this.x = x;
     this.y = y;
-    this.speed = 150;
+    this.speed = 200;
 };
 
 // Update the enemy's position, required method for game
@@ -19,10 +19,8 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x = (dt*this.speed) + this.x;
     if (this.x > 600) {
-        this.x = -100;
-    }
-    console.log(this.x);
-    console.log(this.y);
+        this.x = (-400)*Math.random();
+    };
 };
 
 // Draw the enemy on the screen, required method for game
@@ -34,51 +32,67 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var Player = function(){
+var PlayerObj = function(){
     this.sprite = "images/enemy-bug.png";
-    //initialize player position
-    this.x = 100;
-    this.y = 50;
+    this.x = 200;
+    this.y = 385;
+
+};
+
+PlayerObj.prototype.xgetter = function() {
+    return this.x;
 };
 
 //player methods run off player prototype 
-Player.prototype.update = function(x, y) {
-    this.y = this.y + y;
-    this.x = this.x + x;
-}
+PlayerObj.prototype.update = function() {
+};
 
 //method to update player position with arrow keys
-Player.prototype.handleInput = function(input){
-    if (input === "down"){
-        this.update(0, -100);
+PlayerObj.prototype.handleInput = function(input){
+    switch(input) {
+        case "down":
+            if (this.y < 385){
+                this.y = this.y + 80;
+            }
+            break;
+        case "up": 
+            this.y = this.y - 80;
+            if (this.y <= -20){
+                this.reset();
+            }
+            break;
+        case "right":
+            if (this.x < 380){
+                this.x = this.x + 90;
+            }
+            break;
+        case "left":
+            if (this.x > 100){
+                this.x = this.x - 90;
+            }
+            break;
     }
-    else if (input === "up"){
-        this.update(0, 100);
-    }
-    else if (input === "right"){
-        this.update(100, 0);
-    }
-    else if (input === "left"){
-        this.update(-100, 0);
-    };
+
+    console.log("x" + this.x);
+    console.log("y" + this.y);
 };
 
-Player.prototype.render = function () {
+PlayerObj.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
 };
 
-Player.prototype.reset = function() {
-    this.x = 100;
-    thix.y = 50;
+
+PlayerObj.prototype.reset = function() {
+    this.x = 200;
+    this.y = 385;
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var player = new Player();
-var allEnemies = [new Enemy(-100, 225), new Enemy(-100, 150), new Enemy(-100, 50)];
+var player = new PlayerObj();
+var allEnemies = [new Enemy(-500*Math.random(), 225), new Enemy(-500*Math.random(), 150), new Enemy(-500*Math.random(), 50)];
 
 
 // This listens for key presses and sends the keys to your
