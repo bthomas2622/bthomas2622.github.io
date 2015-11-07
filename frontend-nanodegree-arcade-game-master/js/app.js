@@ -20,17 +20,17 @@ Enemy.prototype.update = function(dt) {
     this.x = (dt*this.speed) + this.x;
 
     //if statement that checks to see if the enemy has run into a player any time its position changes (dt)
-    if (player.x < this.x + 100 & player.x > this.x - 50){
-        if (player.y > this.y - 50 & player.y < this.y + 50){
+    if (player.x < this.x + 100 && player.x > this.x - 50){
+        if (player.y > this.y - 50 && player.y < this.y + 50){
             player.reset();
-        };
-    };
+        }
+    }
 
     //if statement that returns the enemy to the start of the track when it goes off screen
     //Math.random() returns a "random" value between 0 and 1 that I use to stagger start of enemy
     if (this.x > 600) {
         this.x = (-400)*Math.random();
-    };
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -57,6 +57,7 @@ PlayerObj.prototype.xgetter = function() {
 
 //I chose to update the players position in the handleinput function
 PlayerObj.prototype.update = function() {
+    //no op
 };
 
 //method to update player position with arrow keys
@@ -69,7 +70,7 @@ PlayerObj.prototype.handleInput = function(input){
                 this.y = this.y + 80;
             }
             break;
-        case "up": 
+        case "up":
             this.y = this.y - 80;
             //if statement resents the player once they reach the end of road
             //clear the text from the winning run
