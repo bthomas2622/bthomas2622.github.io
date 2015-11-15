@@ -1,7 +1,7 @@
 
 /*!
  * gulp
- * $ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
+ * $ npm install gulp-ruby-sass gulp-image-resize gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
  */
 
 // Load plugins
@@ -136,9 +136,51 @@ gulp.task('resize6', function () {    //540 resize
     .pipe(gulp.dest('dist/img'));
 });
 
+
 // Clean
 gulp.task('clean', function(cb) {
     del(['dist/css', 'dist/js', 'dist/img'], cb)
+});
+
+//tasks for web optimization and clean
+gulp.task('weboptclean', function(cb) {
+    del(['web-optimize/dist/css', 'web-optimize/dist/js', 'web-optimize/dist/img'], cb)
+});
+
+// Scripts for web opt
+gulp.task('weboptscripts', function() {
+  return gulp.src('web-optimize/js/**/*.js')
+    //.pipe(jshint('.jshintrc'))
+    //.pipe(jshint.reporter('default'))
+    .pipe(concat('perfmatters.js'))
+    .pipe(gulp.dest('web-optimize/dist/js'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify())
+    .pipe(gulp.dest('web-optimize/dist/js'))
+    .pipe(notify({ message: 'Scripts task complete' }));
+});
+
+// Images
+gulp.task('weboptimages', function() {
+  return gulp.src('web-optimize/img/**/*')
+    .pipe(cache(imagemin({ optimizationLevel: 4, progressive: true, interlaced: true })))
+    .pipe(gulp.dest('web-optimize/dist/images'))
+    .pipe(notify({ message: 'Images task complete' }));
+});
+
+gulp.task('weboptstyles', function(cb) {
+      return gulp.src('web-optimize/css/*.css')
+        .pipe(autoprefixer({
+          browsers: ['last 2 versions'] //newly added and not tested
+        })) 
+        .pipe(minifycss())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('web-optimize/dist/css'));
+});
+
+// web op Default task
+gulp.task('weboptdefault', function() {   //two parameters, takes name and function
+    gulp.start('weboptstyles', 'weboptimages', 'weboptscripts');
 });
 
 // Default task
