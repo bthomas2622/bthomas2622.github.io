@@ -424,9 +424,9 @@ var resizePizzas = function(size) {
   // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldwidth = elem.offsetWidth;
-    //NEW COMMOENT - replaced querySelector with getElementById. querySelector is slower since it has more 
+    //NEW COMMENT - replaced querySelector with getElementById. querySelector is slower since it has more 
     //a more elaborate search that works from a static node list rather than a live nodellist that getElement uses
-    var windowwidth = document.getElementById("#randomPizzas").offsetWidth;
+    var windowwidth = document.getElementById("randomPizzas").offsetWidth;
     var oldsize = oldwidth / windowwidth;
 
     // TODO: change to 3 sizes? no more xl?
@@ -453,7 +453,7 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
     //NEW COMMENT - replacing querySelectorAll with getElementsByClassName again since getElements is faster. 
-    //put calculation for pizzas in dedicated variable so that work could be re-used in subsequent calculations
+    //put calculation for randomPizzaContainer in dedicated variable so that work could be re-used in subsequent calculations
     //also dx and new are the same for every pizza so only need to calculate once
     
     var pizzas = document.getElementsByClassName("randomPizzaContainer");
@@ -508,7 +508,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // NEW COMMENT - when variable calculated inside for loop is same every time its gots to go! (items)
 //also replaced querySelectorAll with getElements for same logic outlined in previous comments
-var items = document.getElementsByClassName('.mover');
+var items = document.getElementsByClassName('mover');
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
@@ -546,7 +546,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     //NEW COMMENT - replaced the dastardly querySelector with getElement (don't worry i have infinite ways of wording this)
-    document.getElementById("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });
