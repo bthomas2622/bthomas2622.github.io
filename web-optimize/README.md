@@ -23,7 +23,7 @@ Anyone is welcome to re-use the code used in this project.
 
 #### References
 
-* [Udacity Website Performance Optimization Class](https://www.udacity.com/course/object-oriented-javascript--ud015)
+* [Udacity Website Performance Optimization Class](https://www.udacity.com/course/website-performance-optimization--ud884)
 
 #### Contact Me
 

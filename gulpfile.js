@@ -144,7 +144,7 @@ gulp.task('clean', function(cb) {
 
 //tasks for web optimization and clean
 gulp.task('weboptclean', function(cb) {
-    del(['web-optimize/dist/css', 'web-optimize/dist/js', 'web-optimize/dist/img'], cb)
+    del(['web-optimize/dist/css', 'web-optimize/dist/js', 'web-optimize/dist/images', 'web-optimize/views/dist/images'], cb)
 });
 
 // Scripts for web opt
@@ -163,8 +163,16 @@ gulp.task('weboptscripts', function() {
 // Images
 gulp.task('weboptimages', function() {
   return gulp.src('web-optimize/img/**/*')
-    .pipe(cache(imagemin({ optimizationLevel: 4, progressive: true, interlaced: true })))
+    .pipe(cache(imagemin({ optimizationLevel: 6, progressive: true, interlaced: true })))
     .pipe(gulp.dest('web-optimize/dist/images'))
+    .pipe(notify({ message: 'Images task complete' }));
+});
+
+// pizza Images
+gulp.task('pizzaimages', function() {
+  return gulp.src('web-optimize/views/img/**/*')
+    .pipe(cache(imagemin({ optimizationLevel: 6, progressive: true, interlaced: true })))
+    .pipe(gulp.dest('web-optimize/views/dist/images'))
     .pipe(notify({ message: 'Images task complete' }));
 });
 
@@ -180,7 +188,7 @@ gulp.task('weboptstyles', function(cb) {
 
 // web op Default task
 gulp.task('weboptdefault', function() {   //two parameters, takes name and function
-    gulp.start('weboptstyles', 'weboptimages', 'weboptscripts');
+    gulp.start('weboptstyles', 'weboptimages', 'weboptscripts', 'pizzaimages');
 });
 
 // Default task
