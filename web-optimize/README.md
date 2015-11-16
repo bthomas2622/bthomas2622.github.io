@@ -9,7 +9,10 @@ My challenge was to optimize this online portfolio for speed! In particular, opt
 * added media query for css file for scenarios of max-width of screen was 480px
 * removed online font
 * added "async" tag to javascripts that did not impact DOM or CSSOM 
-* minify css and javascript
+* minify javascript
+* moved all css internal to html
+* utilized gulp to compress and resize images where needed 
+* utilized the html meta tag "CACHE-CONTROL" to designate "PUBLIC" status
 
 
 #### Directory Structure
