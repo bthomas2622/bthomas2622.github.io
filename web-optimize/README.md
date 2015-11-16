@@ -19,6 +19,7 @@ My challenge was to optimize this online portfolio for speed! In particular, opt
 * moved all variables inside for loops that were calcuated to be the same each time outside the for loop
 * changed the amount of pizzas being generated from 200 to 25 since they are not all visible on screen
 * calculated some actionas that were repeated calculations (dx and newwidth)
+* added "backface-visiblity: hidden" style to the "mover" class so that the browser will only repaint moving pizzas rather than whole screen 
 
 
 ###Key Gulp plugins used
