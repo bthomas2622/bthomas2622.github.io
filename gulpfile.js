@@ -170,10 +170,23 @@ gulp.task('weboptimages', function() {
 
 // pizza Images
 gulp.task('pizzaimages', function() {
-  return gulp.src('web-optimize/views/img/**/*')
-    .pipe(cache(imagemin({ optimizationLevel: 6, progressive: true, interlaced: true })))
+  return gulp.src('web-optimize/views/images/**/*')
+    .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
     .pipe(gulp.dest('web-optimize/views/dist/images'))
     .pipe(notify({ message: 'Images task complete' }));
+});
+
+//pizzaresize
+gulp.task('pizzaresize', function () { //780 resize
+  return gulp.src('web-optimize/views/images/pizzeria.jpg')
+    .pipe(imageResize({ 
+      width : 780,
+      crop : false,
+      imageMagick : true,
+      upscale : false
+    }))
+    .pipe(rename({ suffix: '-780' }))
+    .pipe(gulp.dest('web-optimize/views/images'));
 });
 
 gulp.task('weboptstyles', function(cb) {
