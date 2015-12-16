@@ -10,7 +10,7 @@ var bio = {
         "location": "Atlanta, GA"
     },
     "bioPic": "mugshot.jpg",
-    "welcomeMessage": "Welcome to my resume!",
+    "welcomeMessage": "",
     "skills": [
         "Microsoft Office",
         "VBA",

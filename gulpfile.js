@@ -171,21 +171,21 @@ gulp.task('weboptimages', function() {
 // pizza Images
 gulp.task('pizzaimages', function() {
   return gulp.src('web-optimize/views/images/**/*')
-    .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
+    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
     .pipe(gulp.dest('web-optimize/views/dist/images'))
     .pipe(notify({ message: 'Images task complete' }));
 });
 
 //pizzaresize
-gulp.task('pizzaresize', function () { //780 resize
-  return gulp.src('web-optimize/views/images/pizzeria.jpg')
+gulp.task('pizzaresize', function () { //540 resize
+  return gulp.src('web-optimize/views/images/pizzeria-780.jpg')
     .pipe(imageResize({ 
-      width : 780,
+      width : 300,
       crop : false,
       imageMagick : true,
       upscale : false
     }))
-    .pipe(rename({ suffix: '-780' }))
+    .pipe(rename({ suffix: '-300' }))
     .pipe(gulp.dest('web-optimize/views/images'));
 });
 
