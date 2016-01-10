@@ -25,7 +25,7 @@ div#social a {
 }
 
 div#social a:last-of-type {
-	margin-right: 10%;
+	margin-right: 10px;
 }
 
 div#social {
@@ -157,6 +157,15 @@ h2 {
 	div .hero {
 		background-image: url(space-640h.jpeg); 
 	}
+	h2 {
+		font-size: 16px;
+	}
+	h3 {
+		font-size: 14px;
+	}
+	p {
+		font-size: 12px;
+	}
 }
 
 @media screen and (max-width: 780px) and (min-width: 541px) {
@@ -169,6 +178,15 @@ h2 {
 	}
 	div .hero {
 		background-image: url(space-900h.jpeg); 
+	}
+	h2 {
+		font-size: 20px;
+	}
+	h3 {
+		font-size: 18px;
+	}
+	p {
+		font-size: 16px;
 	}
 }
 
