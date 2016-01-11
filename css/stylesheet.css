@@ -3,7 +3,7 @@
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	box-sizing: border-box;
-	font-family: "Roboto", Times;
+	font-family: "Roboto", "Helvetica", sans-serif;
 }
 
 body {
@@ -55,7 +55,6 @@ div#social {
 
 div .hero {
 	background-image: url(space-1920.jpeg); 
-    background-repeat: no-repeat;
     margin: 0;
     border-bottom: black solid;
     border-width: 4px;
@@ -85,7 +84,6 @@ p {
 	color: white;
 	margin: 0px;
 	padding: 0px 5px 5px 5px;
-	font-style: oblique;
 }
 
 h3 {
@@ -127,7 +125,6 @@ h2 {
 
 .description {
 	color: black;
-	font-weight: bold;
 }
 
 
@@ -156,10 +153,10 @@ h2 {
 		font-size: 14px;
 	}
 	.my-picture {
-	  	width: 75%;
+	  	width: 50%;
 	}
 	div .hero {
-		background-image: url(space-640h.jpeg); 
+		background-image: url(space-900h.jpeg); 
 	}
 	.title {
 		font-size: 22px;
