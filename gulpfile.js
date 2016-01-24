@@ -43,11 +43,11 @@ gulp.task('styles', function(){
 
 // Scripts
 gulp.task('scripts', function() {
-  return gulp.src('js/**/*.js')
+  return gulp.src('js/*.js')
     //.pipe(jshint('.jshintrc'))
     //.pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('dist/js'))
+    //.pipe(concat('combined.js'))
+    //.pipe(gulp.dest('dist/js'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
