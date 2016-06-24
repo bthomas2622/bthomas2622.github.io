@@ -1,0 +1,258 @@
+* {
+	font-family: "Playfair Display", serif;
+}
+
+body {
+	background-color: #121E25;
+	color: white;
+}
+
+.container ul li {
+	list-style: none;
+	font-weight: bold;
+}
+
+h3 {
+	font-family: "Playfair Display", serif;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+td {
+	padding: 10px;
+	color: transparent;
+} 
+
+#flowerfield, #end{
+	width: 500px;
+	margin: 20px auto;
+}
+
+#eventPic {
+	margin: 5px 25%;
+}
+
+.flower {
+	height: 50px;
+	border: 2px dotted black;
+}
+
+.statRow {
+	padding-top: 10px
+}
+
+.usedFlower {
+	background-color: #544017 !important; 
+}
+
+.currentFlower {
+	background-color: black !important; 
+}
+
+.btn {
+	margin-left: 10px;
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+#finalQueenCount {
+	font-style: italic;
+	color: #e4a208;
+	font-size: 16px; 
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 540px) {
+	#end {
+		width: 350px;
+		margin: 20px auto;
+	}
+}
+
+@media screen and (max-width: 780px) and (min-width: 541px) {
+
+}
+
+@media screen and (min-width: 992px) {
+	#flowerfield, #end {
+		width: 500px;
+		margin: 20px 25%;
+	}
+	#eventPic {
+		margin: 5px 25%;
+	}
+}
+
+/* Honeycomb CSS */
+.hexagon {
+	position: relative;
+	display: inline-block;
+	/* left/right margin approx. 25% of .hexagon width + spacing */
+	margin: -1.2px 4.2px;
+}
+.hexagon, .hexagon::before, .hexagon::after {
+	/* easy way: height is width * 1.732, actual formula is 2*(width/(2*Math.tan(Math.PI/6))) */
+	width: 15px;
+	height: 26px;
+	border-radius: 15%/3%;
+}
+.hexagon::before {
+	background-color: inherit;
+	content: "";
+	position: absolute;
+	transform: rotate(-60deg);
+}
+.hexagon::after {
+	background-color: inherit;
+	content: "";
+	position: absolute;
+	transform: rotate(60deg);
+}
+.hexagon:nth-child(even) {
+	/* top approx. 50% of .hexagon height + spacing */
+	top: 15px;
+}
+.hexagon:hover {
+	opacity: .6;
+	cursor: pointer;
+}
+
+#title {
+	text-align: center;
+	background-color: #BF8C32;
+	border-bottom: white solid;
+	border-width: 4px;
+}
+
+h1, h2 {
+	font-family: "Playfair Display", serif;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 5px;
+}
+
+#help:hover {
+	cursor: pointer;
+	color: black;
+}
+
+a {
+	cursor: pointer;
+	color: white;
+}
+
+a:hover {
+	color: black;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#dialogueWindow div {
+	color: #ffb019;
+	font-size: 20px;
+	font-family: 'Bangers', serif;
+	font-weight: normal;
+}
+
+#dialogueWindow {
+	color: #5990cc;
+	font-size: 20px;
+	font-family: 'Bangers', serif;
+	font-weight: normal;
+}
+
+#dialogueWindow #decision {
+	color: white;
+	font-size: 18px;
+	font-family: "Playfair Display", serif;
+	font-weight: bold;
+}
+
+#definitionText {
+	color: white;
+	font-size: 16px;
+	font-family: 'Playfair Display', serif;
+	font-weight: normal;
+	padding-top: 15px;
+	text-align: center;
+}
+
+#dialogueWindow #definition {
+	color: black;
+	font-size: 18px;
+	font-family: "Playfair Display", serif;
+	font-weight: bold;
+}
+
+/* Modal Stuff */
+.modal-content {
+	background-color: #f1ce92;
+}
+
+.modal-body {
+	color: #121E25;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#myModalLabel {
+	color: #121E25;
+	font-family: "Playfair Display", serif;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.emphasis {
+	text-decoration: underline;
+}
+
+.callout {
+	font-style: italic;
+}
+
+#hexDemo {
+	padding-bottom: 15px;
+	padding-left: 30px;
+}
+
+#hexDemo2 {
+	padding-bottom: 0px;
+	padding-top: 10px;
+	padding-left: 30px;
+}
+
+/* Honeycomb CSS */
+.hexagonDummy {
+	position: relative;
+	display: inline-block;
+	/* left/right margin approx. 25% of .hexagon width + spacing */
+	margin: -1.2px 4.2px;
+}
+.hexagonDummy, .hexagonDummy::before, .hexagonDummy::after {
+	/* easy way: height is width * 1.732, actual formula is 2*(width/(2*Math.tan(Math.PI/6))) */
+	width: 15px;
+	height: 26px;
+	border-radius: 15%/3%;
+}
+.hexagonDummy::before {
+	background-color: inherit;
+	content: "";
+	position: absolute;
+	transform: rotate(-60deg);
+}
+.hexagonDummy::after {
+	background-color: inherit;
+	content: "";
+	position: absolute;
+	transform: rotate(60deg);
+}
+.hexagonDummy:nth-child(even) {
+	/* top approx. 50% of .hexagon height + spacing */
+	top: 15px;
+}
+.hexagonDummy:hover {
+	opacity: .6;
+	cursor: pointer;
+}
