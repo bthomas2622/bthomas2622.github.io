@@ -1,7 +1,7 @@
-Ben Thomas Front End Web Dev Project Portfolio
+Ben Thomas Project Portfolio
 ===============================
 
-This portolio is a mix projects I completed for my Udacity Front End Web Developer Nanodegree certification and personal projects.
+This portfolio is a mix of my coding and creative projects in addition to the projects I completed for my Udacity Front End Web Developer Nanodegree certification.
 
 # **Nanodegree Program Summary**
 
@@ -24,6 +24,8 @@ To run this project simply open the "index.html" file in a browser of your choic
 
 ## Selected Projects
 
+* Bee Game
+* Giant Bomb Chrome Extension
 * JavaScript Created Online Resume
 * Classic Arcade Game
 * Website Optimization
@@ -44,6 +46,7 @@ Anyone is welcome to re-use the code used in this project.
 
 * [Udacity Front End Web Dev Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001)
 * [JQueury Documentation](https://api.jquery.com/)
+* [Bootstrap Framework](http://getbootstrap.com/)
 
 #### Contact Me
 
