@@ -3,11 +3,24 @@ Ben Thomas Project Portfolio
 
 This portfolio is a mix of my coding and creative projects in addition to the projects I completed for my Udacity Front End Web Developer Nanodegree certification.
 
-# **Nanodegree Program Summary**
+# Selected Projects
+
+* Bee Game
+* Giant Bomb Chrome Extension
+* Twitch Chatbot
+* JavaScript Created Online Resume
+* Classic Arcade Game
+* Website Optimization
+* Neighborhood Map
+* Cat-Clicker and Knockout Cat-Clicker
+* JavaScript Tester: RSS Feed Reader
+* freebrunch gaming
+
+## **Nanodegree Program Summary**
 
 Learn the fundamentals of how the web works and gain a working knowledge of the three foundational languages that power each and every website: HTML, CSS and JavaScript. This Nanodegree will provide a guided, efficient path for you to learn to build beautiful, responsive websites optimized for security and performance.  
 
-## Nanodegree Curriculum 
+### Nanodegree Curriculum 
 
 * create a professional portfolio using HTML and the Bootstrap CSS framework
 * use the power of jQuery’s DOM manipulation to dynamically populate a resume with your own information
@@ -21,18 +34,6 @@ Learn the fundamentals of how the web works and gain a working knowledge of the 
 ## How to "Run"
 
 To run this project simply open the "index.html" file in a browser of your choice.
-
-## Selected Projects
-
-* Bee Game
-* Giant Bomb Chrome Extension
-* JavaScript Created Online Resume
-* Classic Arcade Game
-* Website Optimization
-* Neighborhood Map
-* Cat-Clicker and Knockout Cat-Clicker
-* JavaScript Tester: RSS Feed Reader
-* freebrunch gaming
 
 #### Directory Structure
 
