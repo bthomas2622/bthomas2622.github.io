@@ -1,10 +1,11 @@
 Ben Thomas Project Portfolio
 ===============================
 
-This portfolio is a mix of my coding and creative projects in addition to the projects I completed for my Udacity Front End Web Developer Nanodegree certification.
+This my portfolio of coding and creative projects. It also contains the projects I completed for my Udacity Front End Web Developer Nanodegree certification.
 
 # Selected Projects
 
+* Space Canoe
 * Bee Game
 * Giant Bomb Chrome Extension
 * Twitch Chatbot
