@@ -172,6 +172,9 @@ h2 {
 	p {
 		font-size: 12px;
 	}
+	li {
+		font-size: 12px;
+	}
 	.shadow {
 		text-shadow: 2px 2px black;
 	}
@@ -205,6 +208,9 @@ h2 {
 		font-size: 18px;
 	}
 	p {
+		font-size: 16px;
+	}
+	li {
 		font-size: 16px;
 	}
 }
