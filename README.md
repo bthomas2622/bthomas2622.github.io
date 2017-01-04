@@ -13,7 +13,6 @@ This my portfolio of coding and creative projects. It also contains the projects
 * Classic Arcade Game
 * Website Optimization
 * Neighborhood Map
-* Cat-Clicker and Knockout Cat-Clicker
 * JavaScript Tester: RSS Feed Reader
 * freebrunch gaming
 
