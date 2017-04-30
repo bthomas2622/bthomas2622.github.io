@@ -14,7 +14,7 @@ This my portfolio of coding and creative projects. It also contains the projects
 * Website Optimization
 * Neighborhood Map
 * JavaScript Tester: RSS Feed Reader
-* freebrunch gaming
+* Press Space to Wave
 
 ## **Nanodegree Program Summary**
 
