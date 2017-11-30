@@ -52,7 +52,6 @@ div#social {
 div .hero {
 	background-image: url(space-1920.jpeg); 
     margin: 0;
-    border-bottom: black solid;
     border-width: 4px;
 }
 
@@ -108,15 +107,16 @@ h2 {
 	height: 480px;
 }
 
-
 .entry {
 	text-align: center;
-	margin-top: 0px;
-	margin-bottom: 15px;
 	background-color: white;
 	font-weight: bold;
-	border-radius: 25px;
-	border: 4px solid black;
+	border: 6px solid black;
+	vertical-align: middle;
+}
+
+.buffer {
+	margin:5px;
 }
 
 .description {
@@ -141,6 +141,19 @@ h2 {
 }
 
 /* MEDIA QUERIES */
+
+@media screen and (min-width: 781px) {
+	.is-table-row {
+		display: table;
+		border-collapse: collapse;
+	}
+	.entry {
+		float: none;
+		display: table-cell;
+		vertical-align: middle;
+		width: 50%;
+	}
+}
 
 @media screen and (max-width: 540px) {
 	div#social {
