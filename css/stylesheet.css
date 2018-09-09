@@ -120,6 +120,8 @@ h2 {
 	border-radius: 10px;
 	/* border: 6px solid black; */
 	vertical-align: middle;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .buffer {
@@ -128,11 +130,6 @@ h2 {
 
 .description {
 	color: black;
-}
-
-.container .row {
-	margin-top: 10px;
-	margin-bottom: 10px;
 }
 
 .my-picture {
@@ -164,14 +161,19 @@ h2 {
 		vertical-align: middle;
 		width: 50%;
 	}
+
+	.container .row {
+		margin-top:10px;
+		margin-bottom:10px;
+	}
 }
 
 @media screen and (max-width: 540px) {
-	.sharedentry {
+	.entry {
 		margin-top: 10px;
 		margin-bottom: 10px;
 	}
-	
+
 	div#social {
 		padding-bottom: 5px;
 		padding-top: 5px;
@@ -210,7 +212,7 @@ h2 {
 }
 
 @media screen and (max-width: 780px) and (min-width: 541px) {
-	.sharedentry {
+	.entry {
 		margin-top: 10px;
 		margin-bottom: 10px;
 	}
