@@ -85,7 +85,7 @@ h3 {
 	color: white;
 	margin: 0px;
 	padding: 10px;
-	font-style: oblique;
+	font-weight: bold;
 }
 
 h2 {
@@ -109,7 +109,7 @@ h2 {
 
 .entry {
 	text-align: center;
-	background-color: white;
+	background-color: whitesmoke;
 	font-weight: bold;
 	border: 6px solid black;
 	vertical-align: middle;
@@ -180,7 +180,7 @@ h2 {
 		font-size: 16px;
 	}
 	h3 {
-		font-size: 14px;
+		font-size: 16px;
 	}
 	p {
 		font-size: 12px;
@@ -218,7 +218,7 @@ h2 {
 		font-size: 20px;
 	}
 	h3 {
-		font-size: 18px;
+		font-size: 20px;
 	}
 	p {
 		font-size: 16px;
