@@ -167,9 +167,11 @@ h2 {
 }
 
 @media screen and (max-width: 540px) {
-	.entry {
+	.sharedentry {
 		margin-top: 10px;
+		margin-bottom: 10px;
 	}
+	
 	div#social {
 		padding-bottom: 5px;
 		padding-top: 5px;
@@ -208,8 +210,9 @@ h2 {
 }
 
 @media screen and (max-width: 780px) and (min-width: 541px) {
-	.entry {
+	.sharedentry {
 		margin-top: 10px;
+		margin-bottom: 10px;
 	}
 
 	div#social {
