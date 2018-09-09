@@ -6,6 +6,12 @@ body {
 	background-color: #383838;
 }
 
+hr { 
+    display: block;
+	border-width: 10px;
+	margin: 0px;
+	border-color: black;
+}
 
 [class*="zocial-"]:before {
 	color: black;
@@ -26,7 +32,7 @@ div#social a:last-of-type {
 
 div#social {
 	text-align: right;
-	background-color: white;
+	background-color: whitesmoke;
 	padding-bottom: 10px;
 	padding-top: 10px;
 	border-bottom: black solid;
@@ -62,7 +68,7 @@ div .hero {
 	font-weight: bold;
 	padding: 5px;
 	margin: 0px;
-	color: white;
+	color: whitesmoke;
 }
 
 .subtitle {
@@ -72,24 +78,24 @@ div .hero {
 	font-weight: bold;
 	margin: 0em;
 	padding: 5px 5px 20px 5px;
-	color: white;
+	color: whitesmoke;
 }
 
 p {
-	color: white;
+	color: whitesmoke;
 	margin: 0px;
 	padding: 0px 5px 5px 5px;
 }
 
 h3 {
-	color: white;
+	color: whitesmoke;
 	margin: 0px;
 	padding: 10px;
 	font-weight: bold;
 }
 
 h2 {
-	color: white;
+	color: whitesmoke;
 	margin: 0px;
 	padding: 20px;
 	font-style: normal;
@@ -111,7 +117,8 @@ h2 {
 	text-align: center;
 	background-color: whitesmoke;
 	font-weight: bold;
-	border: 6px solid black;
+	border-radius: 10px;
+	/* border: 6px solid black; */
 	vertical-align: middle;
 }
 
@@ -123,6 +130,10 @@ h2 {
 	color: black;
 }
 
+.container .row {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 
 .my-picture {
   display: block;
@@ -130,7 +141,7 @@ h2 {
   width: 40%;
   max-height: 500px;
   max-width: 500px;
-  border: 4px solid white;
+  border: 4px solid whitesmoke;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -156,6 +167,9 @@ h2 {
 }
 
 @media screen and (max-width: 540px) {
+	.entry {
+		margin-top: 10px;
+	}
 	div#social {
 		padding-bottom: 5px;
 		padding-top: 5px;
@@ -194,6 +208,10 @@ h2 {
 }
 
 @media screen and (max-width: 780px) and (min-width: 541px) {
+	.entry {
+		margin-top: 10px;
+	}
+
 	div#social {
 		padding-bottom: 5px;
 		padding-top: 5px;
