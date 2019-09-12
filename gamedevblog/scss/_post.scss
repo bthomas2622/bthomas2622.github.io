@@ -1,4 +1,13 @@
 // Styling for the post page
+.img-css-fluid {
+  display: block;
+  margin: 0px auto 0px;
+  width: 40%;
+  max-height: 500px;
+  max-width: 500px;
+  border-radius: 20%;
+}
+
 .post-preview {
   > a {
     color: $gray-900;
