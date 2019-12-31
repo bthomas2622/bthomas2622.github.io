@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147640575-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-147640575-1');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="benjamin william thomas game development blog">
+  <meta name="author" content="Ben Thomas">
+
+  <title>BWT Blog</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        More
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="games.html">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/basic-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>BUBBLES</h1>
+            <span class="meta">Posted by
+              <a href="about.html">Ben Thomas</a>
+              on December 31, 2019</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>It’s been a tough couple months since I release the prototype for <a href="https://freebrunch.itch.io/nectar-of-the-gods">Nectar of the Gods</a> (NotG). Sometimes life just comes at you fast and you gotta take care of yourself at the expense of your hobbies. With the holiday slowdown I’ve finally had some time to get back to tinkering with NotG. I really want to focus on injecting some delightfulness features now. I spent a lot of time focusing on getting the bare minimum functionality needed to publish a prototype.</p>
+          <p>Everyone knows that BUBBLES are delightful. NotG is a game on a grid. All the action takes place on 64 squares in the center of the screen. But that doesn’t mean some environmental flourishes won’t go a long way to immerse the player. In hearthstone the cards battle on the battlefield, but different maps offer different flavorful interactions on the <a href="https://hearthstone.fandom.com/wiki/Game_boards">corners of the board</a> that go a really long way! This is a picture of my old side panel:</p>
+          <img class="img-css-fluid" src="img/staticSodaSidePanel.png" alt="staticSodaSidePanel">
+          <p>It’s a soda themed side panel, one of the choice sugary drinks the beetle brigade is slurping. I think it looks really nice for my abilities. It’s got a minimalist color palette, a simple soda can, and textured background with bubbles in the foreground. But as I playtested my prototype I felt myself craving something more dynamic. Something that evoked the sense of “aliveness” games can create. I decided I wanted to animate the BUBBLES to rise up from the soda can’s opening! This proved much more difficult than I imagined for my animation abilities.</p>
+          <p>The first thought is always going to be an infinite loop of bubbles. Bubbles that indefinitely rise. I created a <a href="https://krita.org/en/">Krita</a> (free art software) file that was 15000 pixels high. The height of my game is 2160 pixels the pixel height of a 4K screen. My plan was to copy my giant vertical bubble stream into my side panel art file and raise the stream slowly taking animation snapshots along the way. It was extremely tedious raising the image like 50 pixels, saving the panel, then duplicating the panel, raising 50 pixels, etc. Once I got to the end I tried to connect the bottom of the bubbles back to the top to create the infinite effect. But after driving myself crazy and staying up way too late I could not figure out how to do it without an ugly “jump” in the animation ruining the smoothness. Basically I had to infinitely keep chopping up the giant bubble file and try to align everything perfectly each frame to arrive exactly where I started. And it was not working for me.</p>
+          <p>My next thought was to generate individual bubble GameObjects in Unity. A bubble could be created each second with an upward velocity and some jitter. I think this would be pretty easy to do and look the best for sure. But in my head it just seems like way too much engine/compute resources dedicated to a non gameplay element that I could just make a spritesheet animation for.</p>
+          <p>So I just settled for my looped bubble animation that’s not infinite. Which might be better than infinite bubbles because they have some space to breath. I uploaded all the pictures to giphy to create a gif for this post. Buut it compressed everything and changed colors to hell but it’s still the jist. Pretty happy with how it turned out. Check it out in gif below and the real deal in the next Nectar of the Gods update!</p>
+          <img class="img-css-fluid" src="img/bubbles.gif" alt="bubbles">
+          <p>This is the most helpful Krita animation tutorial I found on Youtube: <a style="color: blueviolet" href="https://www.youtube.com/watch?v=AtOvXp3dHiw">"Krita Animation for Unity 2D tutorial"</a></p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+                <a href="https://freebrunch.itch.io/">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-itch-io fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/freebrunch">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
