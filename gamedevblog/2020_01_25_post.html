@@ -66,10 +66,11 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1>BUBBLES</h1>
+            <h1>Local Multiplayer Update</h1>
+            <h2 class="subheading">BETTER TOGETHER</h2>
             <span class="meta">Posted by
               <a href="about.html">Ben Thomas</a>
-              on December 31, 2019</span>
+              on January 25, 2020</span>
           </div>
         </div>
       </div>
@@ -81,15 +82,50 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>It’s been a tough couple months since I released the prototype for <a href="https://freebrunch.itch.io/nectar-of-the-gods">Nectar of the Gods</a> (NotG). Sometimes life just comes at you fast and you gotta take care of yourself at the expense of your hobbies. With the holiday slowdown I’ve finally had some time to get back to tinkering with NotG. I really want to focus on injecting some delightfulness features now. I spent a lot of time focusing on getting the bare minimum functionality needed to publish a prototype.</p>
-          <p>Everyone knows that BUBBLES are delightful. NotG is a game on a grid. All the action takes place on 64 squares in the center of the screen. But that doesn’t mean some environmental flourishes won’t go a long way to immerse the player. In hearthstone the cards battle on the battlefield, but different maps offer different flavorful interactions on the <a href="https://hearthstone.fandom.com/wiki/Game_boards">corners of the board</a> that go a really long way! This is a picture of my old side panel:</p>
-          <img class="img-css-fluid" src="img/staticSodaSidePanel.png" alt="staticSodaSidePanel">
-          <p>It’s a soda themed side panel, one of the choice sugary drinks the beetle brigade is slurping. I think it looks really nice for my abilities. It’s got a minimalist color palette, a simple soda can, and textured background with bubbles in the foreground. But as I playtested my prototype I felt myself craving something more dynamic. Something that evoked the sense of “aliveness” games can create. I decided I wanted to animate the BUBBLES to rise up from the soda can’s opening! This proved much more difficult than I imagined for my animation abilities.</p>
-          <p>The first thought is always going to be an infinite loop of bubbles. Bubbles that indefinitely rise. I created a <a href="https://krita.org/en/">Krita</a> (free art software) file that was 15000 pixels high. The height of my game is 2160 pixels the pixel height of a 4K screen. My plan was to copy my giant vertical bubble stream into my side panel art file and raise the stream slowly taking animation snapshots along the way. It was extremely tedious raising the image like 50 pixels, saving the panel, then duplicating the panel, raising 50 pixels, etc. Once I got to the end I tried to connect the bottom of the bubbles back to the top to create the infinite effect. But after driving myself crazy and staying up way too late I could not figure out how to do it without an ugly “jump” in the animation ruining the smoothness. Basically I had to infinitely keep chopping up the giant bubble file and try to align everything perfectly each frame to arrive exactly where I started. And it was not working for me.</p>
-          <p>My next thought was to generate individual bubble GameObjects in Unity. A bubble could be created each second with an upward velocity and some jitter. I think this would be pretty easy to do and look the best for sure. But in my head it just seems like way too much engine/compute resources dedicated to a non gameplay element that I could just make a spritesheet animation for.</p>
-          <p>So I just settled for my looped bubble animation that’s not infinite. Which might be better than infinite bubbles because they have some space to breath. I uploaded all the pictures to giphy to create a gif for this post. Buut it compressed everything and changed colors to hell but it’s still the jist. Pretty happy with how it turned out. Check it out in gif below and the real deal in the next Nectar of the Gods update!</p>
-          <img class="img-css-fluid" src="img/bubbles.gif" alt="bubbles">
-          <p>This is the most helpful Krita animation tutorial I found on Youtube: <a style="color: blueviolet" href="https://www.youtube.com/watch?v=AtOvXp3dHiw">"Krita Animation for Unity 2D tutorial"</a></p>
+          <p>Making updates to a game as a solo dev can be a weird thing. The development plan lives in your brain, there’s no marketing deadlines or producer kanban boards. So I wasn’t actually sure when I should “bundle” the features I’ve been working on into a release and push an update to Nectar of Gods. But once I added the local multiplayer to the game I was like this is new and exciting!</p>
+          <img class="img-css-fluid" src="img/sugarCubeRed.png" alt="sugarCubeRed">
+          <p>So here it is! v0.02! The “Local Multiplayer Update”!</p>
+          <p>It includes:
+            <ul>
+              <li>Local multiplayer with either a single keyboard or 2 controllers</li>
+              <li>New environmental animations</li>
+              <li>New game mechanics such as a “boost” tile that speeds up bugs and “sugar cubes” that bugs can eat for a health boost</li>
+              <li>New “Controls” and “Bug Descriptions” UI from the pause menu</li>
+              <li>Updated music and sound effects</li>
+              <li>“Bug” fixes</li>
+            </ul>
+          </p>
+          <p>I feel good about the balance I am doing between quality of life improvements and “playable” features. It is keeping development fresh. I think the ability to play test constantly is crucial to that development feedback loop. Without it sometimes I get lost and unsure of what to prioritize.</p>
+          <p>I tentatively see the rest of NotG’s development in 5 pillars:
+            <ol>
+              <li>2 more bug factions</li>
+              <li>"Story" mode</li>
+              <li>Contract music and sound</li>
+              <li>Polish and balancing</li>
+              <li>Online multiplayer (scary)</li>
+            </ol>
+          </p>
+          <img class="img-css-fluid" src="img/sugarCubeBlue.png" alt="sugarCubeBlue">
+          <p>Mood Journal
+            <ul>
+              <li>Is this game fun? Is anyone gonna be drawn to it? I know the more I add the more it will come together.</li>
+              <li>It’s so nice being able to add to a playable body of work rather than just a bunch of random assets in a unity editor.</li>
+              <li>I care so much about political issues sometimes I am inspired to make things that comment on the injustices in the world. I also try to remember that games can also just be a total escape which is really special too.</li>
+              <li>Holy balls music is hard. There’s a reason people dedicate their lives to making music sound good.</li>
+              <li>Indie game development podcasts are so inspirational, and yet the hustle is so real and precarious.</li>
+            </ul>
+          </p>
+          <p>Thank you guys so much for reading this and just sharing this passion for games with me. It means the world.</p>
+          <p>Love, Ben</p>
+          <img class="img-css-fluid" src="img/sugarCubePurple.png" alt="sugarCubePurple">
+
+          <!-- <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote> -->
+          <!-- <h2 class="section-heading">Reaching for the Stars</h2> -->
+          <!-- <p>Seeing this has to change a man.</p> -->
+          <!-- <a href="#">
+            <img class="img-css-fluid" src="img/post-sample-image.jpg" alt="">
+          </a> -->
+          <!-- <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span> -->
         </div>
       </div>
     </div>

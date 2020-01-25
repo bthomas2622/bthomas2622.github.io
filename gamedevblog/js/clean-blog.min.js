@@ -1,6 +1,6 @@
 /*!
  * Start Bootstrap -  v1.0.0 (https://github.com/bthomas2622/gamedevblog#readme)
- * Copyright 2013-2019 Ben Thomas
+ * Copyright 2013-2020 Ben Thomas
  * Licensed under ISC (https://github.com/BlackrockDigital/gamedevblog/blob/master/LICENSE)
  */
 
