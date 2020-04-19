@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147640575-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-147640575-1');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="benjamin william thomas game development blog">
+  <meta name="author" content="Ben Thomas">
+
+  <title>BWT Blog</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        More
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="games.html">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/basic-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Simple and Sweet AI Update</h1>
+            <h2 class="subheading">"Ok Google"</h2>
+            <span class="meta">Posted by
+              <a href="about.html">Ben Thomas</a>
+              on April 19, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>My hope for Nectar of the Gods is that it's a dynamic, competitive and fun head to head multiplayer experience both locally and online. But that doesn’t mean I don’t also want a challenging and engaging computer AI option to get scrappy with.</p>
+          <p>For the last 2 days I set out to implement a simple yet working AI solution as opposed to the random bug generator that I’ve been using for the prototype so far. In this blog post I will outline the strategy I used in a bit technical and a bit not that technical terms.</p>
+          <img class="img-css-fluid" src="img/gameplaypic1.png" alt="Gameplay Pic 1">
+          <p>As a disclaimer I’ll say that even though I work professionally as a software engineer I am self taught and have no formal training or speciality in machine learning or artificial intelligence. This “AI” solution is really more of a homebrew algorithm as opposed to other AI strategies like <a href="https://en.wikipedia.org/wiki/Minimax">Minimax</a> or the <a href="https://en.wikipedia.org/wiki/Monte_Carlo_tree_search">Monte Carlo Tree Search</a>. This solution is also in very very early days and will surely be iterated on many times over the course of development.</p>
+          <p>That being said let’s get into the problem scenario!</p>
+          <p>Nectar of the Gods is a head-to-head grid based real time strategy game where each player has 32 position options in which to place 8 unique bugs. Each player gets the same rate of resources over time to spend on bugs and each starts with 20 health. A player wins the game when the opposing player has 0 health.</p>
+          <p><b>Simple goals for an AI that is trying to win:</p></b></p>
+          <ol>
+          <li>AI should spend its resources on bugs</li>
+          <li>AI should be able to place bugs to block enemy bugs defensively</li>
+          <li>AI should be able to place bugs where enemy bugs are not offensively</li>
+          <li>AI should place bugs to maximize with each bugs strength</li>
+          </ol>
+          <p style="text-align: center;"><b>The Implementation</b></p>
+          <h3 style="text-align: center;">1</h3>
+          <p>I’ve established a list of offensive and defensive strategies for each bug family so that the AI can be seeded/primed with a random initial strategy at the start of the game.</p>
+          <p>Examples of offensive strategies would be like “3 ladybugs” or “rhino beetle combo” for the Beetle Brigade bug family. An example of a defensive strategy would be a well placed “executioner wasp” by The Hive. These strategies take advantage of unit synergies and specialities.</p>
+          <h3 style="text-align: center;">2</h3>
+          <p>During the games “update” loop. The AI waits until it has enough resources and then executes its seeded strategy.</p>
+<pre>
+  <code>
+if (gameManager.AIResource >= nextCost)
+{
+    gameManager.AIResource -= nextCost;
+    SmartMoveGenerator(nextBugStrategy);
+}      
+  </code>
+</pre>
+          <h3 style="text-align: center;">3</h3>
+          <p>The <code>SmartMoveGenerator</code> is now tasked with efficiently executing the seeded/chosen strategy.</p>
+          <h3 style="text-align: center;">4</h3>
+          <p>The first thing the SmartMoveGenerator does is determine which tiles would be appropriate options for the incoming bug strategy.</p>
+<pre>
+  <code>
+if (stratTypeForPlacement == stratType.offensive)
+{
+    possibleRows = getEnemyEmptyRows(stratTypeForPlacement);
+    placeTile = aiMaps[Random.Range(0, 2)] + possibleRows[Random.Range(0, possibleRows.Count)];
+}
+else
+{
+    possibleRows = getEnemyRows(stratTypeForPlacement);
+    placeTile = aiMaps[Random.Range(2, 4)] + possibleRows[Random.Range(0, possibleRows.Count)];
+} 
+  </code>
+</pre>
+          <p>For offensive strategies the front tiles are preferred since they are more aggressive.</p>
+          <p><code>aiMaps[Random.Range(0, 2)]</code></p>
+          <p>For defensive strategies the back tiles are preferred since they are more conservative.</p>
+          <p>For offensive strategies the target tile rows should be empty of enemy bugs so that the placed bugs have a clear path to the enemy health.</p>
+          <p>For defensive strategies the target tile rows should be ones with enemy bugs so that the AI can prevent them from reaching the AI health.</p>
+          <p><code>possibleRows = getEnemyRows(stratTypeForPlacement);</code></p>
+<pre>
+  <code>
+private List<int> getEnemyRows(stratType incomingStratType)
+  {
+      List<int> enemyRows = new List<int>();
+      Bug[] bugs = FindObjectsOfType<Bug>();
+      if (bugs.Length > 0)
+      {
+          foreach (Bug bug in bugs)
+          {
+              if (bug.GetComponent<Bug>().Player == 1)
+              {
+                  enemyRows.Add(getRow(bug.gameObject.transform.position.y));
+              }            
+  </code>
+</pre>
+          <p>To get the enemy rows I retrieve all of the bugs in the game.</p>
+          <p><code> Bug[] bugs = FindObjectsOfType<Bug>();</code></p>
+          <p>And then add them to a list if they are the enemy player.</p>
+          <p><code> enemyRows.Add(getRow(bug.gameObject.transform.position.y));</code></p>
+          <h3 style="text-align: center;">5</h3>
+          <p>After the AI has placed the chosen strategy on a strategically chosen tile. It is time to generate the next AI strategy. Here is a decision tree for the AI on medium difficulty.</p>
+<pre>
+  <code>
+int stratRatio = Random.Range(1, 11);
+if (GameMaster.Instance.aiDifficulty == GameMaster.difficulty.medium)
+{
+    if (gameManager.PlayerTwoHealth >= 10)
+    {
+        if (stratRatio <= 5)
+        {
+            nextRandom();
+        }
+        else if (stratRatio <= 9)
+        {
+            nextBugStratType = stratType.offensive;
+            if (bugFamily == GameMaster.BugFamilies.beetleBrigade)
+            {
+                nextBugStrategy = offensiveBeetleStrats[Random.Range(0, offensiveBeetleStrats.Count)];
+            }
+            ...
+        }
+        else
+        {
+            nextBugStratType = stratType.defensive;
+            if (bugFamily == GameMaster.BugFamilies.beetleBrigade)
+            {
+                nextBugStrategy = defensiveBeetleStrats[Random.Range(0, defensiveBeetleStrats.Count)];
+            }
+            ...
+                nextBugStrategy = defensiveHiveStrats[Random.Range(0, defensiveHiveStrats.Count)];
+            }
+        }
+    }             
+  </code>
+</pre>
+          <p>If the health is greater than 10 I prioritize offensive moves with the AI versus defensive at lower healths.</p>
+          <p>I roll a dice between 1 and 10. If that dice roll is 5 or less I play a random bug. The random bug is gonna be the strategy I use at this time to lessen the power of the AI. A robotic decision tree can feel stale and I’m hoping the randomness will make it feel more organic to play against.</p>
+          <p>And at this time if the play is to do something offensive, I grab a random offensive strategy to be implemented effectively once the AI has enough resources. And the cycle continues.</p>
+          <p><code>nextBugStrategy = offensiveBeetleStrats[Random.Range(0, offensiveBeetleStrats.Count)];</code></p>
+          <h3 style="text-align: center;">And that's it!</h3>
+          <p>I think it would be cool to explore things like “simulations” for the AI in the future where the AI simulates the outcomes of it’s options. I’m interested to see how people recieve the AI and it’s 3 difficulty levels during this early access phase. I do want player vs. player to be my main focus and I think it’s gonna be where I get the most return on my time investment in the game. But starting the more intelligent AI rabbit hole will be a huge upgrade to the Nectar of the Gods experience and open new doors to new gameplay mechanics as well.</p>
+          <img class="img-css-fluid" src="img/gameplaypic2.png" alt="Gameplay Pic 2">
+          <p>Thanks so much for reading! Happy to answer any questions or to clarify any of this in the comments below!</p>
+          <h3><a style="color: blueviolet" href="https://freebrunch.itch.io/nectar-of-the-gods">PLAY THE GAME HERE</a></h3>
+          <p><b>Favorite AI GameDev Articles</b></p>
+          <ul>
+            <li><a href="https://gamasutra.com/blogs/TerryCavanagh/20181205/332036/How_Enemy_AI_works_in_Dicey_Dungeons.php"><u>Terry Cavanagh - Dicey Dungeons</u></a></li>
+            <li><a href="https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/"><u>FreeCodeCampe - Simple Chess AI</u></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+                <a href="https://freebrunch.itch.io/">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-itch-io fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/freebrunch">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
