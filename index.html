@@ -15,15 +15,29 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
         <title>Ben Thomas Portfolio</title>
-        <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="dist/css/stylesheet.min.css">
-        <!-- <link rel="stylesheet" href="css/stylesheet.css"> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/stylesheet.css">
         <link rel="stylesheet" href="http://weloveiconfonts.com/api/?family=zocial" />
         <link rel="shortcut icon" href="favicon.ico">
         <style> a {color:rgba(167,1,1,1);}</style>
         <style> a:hover {color:rgba(255,132,132,1);}</style>
+        <script>
+            $(function() {
+                var selectedClass = "";
+                $(".filter").click(function(){
+                    selectedClass = $(this).attr("data-rel");
+                    $("#gallery").fadeTo(100, 0.1);
+                    $("#gallery div").not("." + selectedClass + "," + ".pic-transition").fadeOut().removeClass('animation');
+                    setTimeout(function() {
+                        $("."+selectedClass).fadeIn().addClass('animation');
+                        $("#gallery").fadeTo(300, 1);
+                    }, 300);
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="row">
@@ -33,90 +47,318 @@
                 <a href="https://twitter.com/freebrunch" class="zocial-twitter"></a>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 hero">
-                <h1 class="title">Ben Thomas</h1>
-                <div class="img-padding">
-                    <img class="my-picture" src="images/yellowstonecanyon.jpg" srcset="dist/img/yellowstonecanyon-300.jpg 300w, images/yellowstonecanyon.jpg 640w" alt="This is a picture of me">
+        <div class="sorting-buttons" >
+            <div class="row">
+                <div class="col-md-12 hero">
+                    <h1 class="title">Ben Thomas</h1>
+                    <div class="img-padding">
+                        <img class="my-picture" src="images/yellowstonecanyon.jpg" srcset="dist/img/yellowstonecanyon-300.jpg 300w, images/yellowstonecanyon.jpg 640w" alt="This is a picture of me">
+                    </div>
+                    <h2 class="subtitle">Featured Projects</h2>
                 </div>
-                <h2 class="subtitle">Featured Projects</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center my-2">
+                    <button type="button" class="btn btn-light waves-effect filter" data-rel="all">All</button>
+                    <button type="button" class="btn btn-light waves-effect filter" data-rel="1">Games</button>
+                    <button type="button" class="btn btn-light waves-effect filter" data-rel="2">Blog</button>
+                    <button type="button" class="btn btn-light waves-effect filter" data-rel="3">Creative</button>
+                    <button type="button" class="btn btn-light waves-effect filter" data-rel="4">Coding</button>
+                </div>
             </div>
         </div>
         <hr/>
         <div class="container">
-            <div class="row is-table-row">
-                <div class="col-lg-5 col-md-5 col-sm-12 entry sharedentry">
-                    <h3><a href="https://freebrunch.itch.io/nectar-of-the-gods">Nectar of the Gods</a></h3>
-                    <p class="description">Nectar of the Gods is a 2D real-time strategy game about bugs addicted to human beverages. When it is fully completed it will feature a singleplayer story mode alongside local and online 2-player multiplayer. The game is playable with both controller and mouse/keyboard. It is built with Unity game engine so coding is in C#. I created the art/animations in Krita open source painting program.</p>
-                    <p class="description"><a href="https://freebrunch.itch.io/nectar-of-the-gods">itch.io Store Page</a></p>
+            <div class="gallery mt-3" id="gallery">
+                <div class="mb-3 pics animation all 1">
+                    <img class="img-fluid image" src="images/projects/healthHive16x9.png" alt="Nectar of the Gods">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#notg">Nectar of the Gods</btn>
+                    </div>    
                 </div>
-                <div class="col-lg-1 col-md-1 col-sm-0"></div>
-                <div class="col-lg-5 col-md-5 col-sm-12 entry sharedentry">
-                    <h3><a href="gamedevblog/index.html">Game Dev Blog</a></h3>
-                    <p class="description">Blog where I share progress and learnings on game development journey.</p>
-                    <p class="description"><a href="gamedevblog/index.html">Blog</a> | <a href="https://github.com/bthomas2622/game-dev-blog">Github</a></p>
+                <div class="mb-3 pics animation all 4">
+                    <img class="img-fluid image" src="images/projects/gtfs-lab.PNG" alt="GTFS Lab">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#gtfs">GTFS Lab</btn>
+                    </div>   
+                </div>
+                <div class="mb-3 pics animation all 1">
+                    <img class="img-fluid image" src="images/projects/space-canoe.png" alt="Space Canoe">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#space-canoe">Space Canoe</btn>
+                    </div>   
+                </div>
+                <div class="mb-3 pics animation all 4">
+                    <img class="img-fluid image" src="images/projects/twitchdisposition.JPG" alt="Twitch Disposition">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#twitch-chatbot">Twitch Chatbot</btn>
+                    </div>   
+                </div>
+                <div class="mb-3 pics animation all 1">
+                    <img class="img-fluid image" src="images/projects/phorid400.png" alt="Bee Game">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#bee-game">Colony Collapse Disorder</btn>
+                    </div>   
+                </div>
+                <div class="mb-3 pics animation all 3">
+                    <img class="img-fluid image" src="images/projects/the-queue.jpg" alt="The Queue">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#the-queue">The Queue Podcast</btn>
+                    </div>   
+                </div>
+                <div class="mb-3 pics animation all 2">
+                    <img class="img-fluid image" src="images/projects/gamedevblog.PNG" alt="Game Dev Blog">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#blog">Game Dev Blog</btn>
+                    </div>   
+                </div>
+                <div class="mb-3 pics animation all 3">
+                    <img class="img-fluid image" src="images/projects/photography.jpg" alt="Card image cap">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#photography">Photography Portfolio</btn>
+                    </div>   
+                </div>
+                <div class="mb-3 pics animation all 1">
+                    <img class="img-fluid image" src="images/projects/pstw.png" alt="Press Space to Wave">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#pstw">Press Space to Wave</btn>
+                    </div>   
+                </div>
+                <div class="mb-3 pics animation all 4">
+                    <img class="img-fluid image" src="images/projects/ExampleUsage.JPG" alt="Giant Bomb Chrome Extension">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#gb">GiantBomb Chrome Extension</btn>
+                    </div>   
+                </div>
+                <div class="mb-3 pics animation all 4">
+                    <img class="img-fluid image" src="images/projects/neighmap.JPG" alt="Front End Nanodegree">
+                    <div class="pic-transition">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#nanodegree">Udacity Front End Nanodegree</btn>
+                    </div>   
                 </div>
             </div>
-            <div class="row is-table-row">
-                <div class="col-lg-12 col-md-12 col-sm-12 entry" style="width:100%;">
-                    <h3><a href="gtfslab-frontend/index.html">GTFS Lab</a></h3>
-                    <p class="description">GTFS LAB is a data exploration project centered around GTFS (General Transit Feed Specification) data. Public transit is a huge passion of mine and I created GTFS Lab to explore the space. The backend is built with Node.js, Expressjs and MongoDB and hosted on Heroku. The frontend is single-page website built with Reactjs, Bootstrap, and Webpack.</p>
-                    <p class="description"><a href="gtfslab-frontend/index.html">Website</a> | <a href="https://github.com/bthomas2622/gtfs-lab-frontend">Frontend Github</a> | <a href="https://github.com/bthomas2622/gtfs-lab-backend">Backend Github</a></p>
+            <!-- Modals -->
+            <!-- NotG -->
+            <div class="modal fade" id="notg" tabindex="-1" role="dialog" aria-labelledby="notg" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a href="https://freebrunch.itch.io/nectar-of-the-gods">Nectar of the Gods</a></h3>
+                        <p class="description">Nectar of the Gods is a 2D real-time strategy game about bugs addicted to human beverages. The game is playable with both controller and mouse/keyboard. It is built with <a href="https://unity.com/">Unity</a> game engine. I created the art/animations in <a href="https://krita.org/en/">Krita</a> open source painting program.</p>
+                        <p class="description"><a href="https://freebrunch.itch.io/nectar-of-the-gods">itch.io Store Page</a></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
                 </div>
             </div>
-            <div class="row is-table-row">
-                <div class="col-lg-5 col-md-5 col-sm-12 entry sharedentry">
-                    <h3><a href="https://github.com/bthomas2622/space-canoe">Space Canoe</a></h3>
-                    <p class="description">Space Canoe is a 2D arcade style game written in Java using the LibGDX framework. The player uses the left and right arrows (left and right screen touch on mobile) to paddle the canoe away from the perilous space debris. The goal is to survive as long as possible in order to obtain a high "debris dodged" score. Built with LibGDX tools: Box2D, TexturePacker, and FreeType. Art created with Adobe Photoshop.</p>
-                    <p class="description"><a href="https://github.com/bthomas2622/space-canoe">Github</a> | <a href="https://freebrunch.itch.io/space-canoe">itch.io Download</a> | <a href="https://play.google.com/store/apps/details?id=io.github.bthomas2622">Google Play</a></p>
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-0"></div>
-                <div class="col-lg-5 col-md-5 col-sm-12 entry sharedentry">
-                    <h3><a href="https://github.com/bthomas2622/twitchDisposition">Twitch Chatbot</a></h3>
-                    <p class="description">Twitch Disposition is a Twitch IRC Chatbot that performs sentimental analysis in a given Twitch channel. The bot connects to twitch chat through Twitch's Chat API and applies VADER (Valence Aware Dictionary and sEntiment Reasoner), part of the Python "Natural Language Toolkit". The application is presented through "PyQtGraph", a pure-Python graphics library. PyQtGraph leverages the GUI toolkit PyQt5 and the scientific computing package NumPy.</p>
-                    <p><a href="https://github.com/bthomas2622/twitchDisposition">Github</a></p>
-                </div>
-            </div>
-            <div class="row is-table-row">
-                <div class="col-lg-5 col-md-5 col-sm-12 entry sharedentry">
-                    <h3><a href="https://www.flickr.com/gp/150766453@N07/87476x">Photography Portfolio</a></h3>
-                    <p class="description">A collection of my favorite photos. I mainly do nature photography. Photography is a hobby that takes you to extraordinary places. It has helped me connect with nature and better appreciate the beauty in a moment.</p>
-                    <p><a href="https://www.flickr.com/gp/150766453@N07/87476x">Flickr</a></p>
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-0"></div>
-                <div class="col-lg-5 col-md-5 col-sm-12 entry sharedentry">
-                    <h3><a href="https://www.youtube.com/playlist?list=PLPLT9S3jrAETKewMJCwdFIOaawPGXWdnN">The Queue Podcast</a></h3>
-                    <p class="description">Created weekly gaming podcast with two friends. Managed recording schedule, episode planning documents, audio editing, website, art assets, livestream, and RSS/VOD upload.</p>
-                    <p><a href="https://www.youtube.com/playlist?list=PLPLT9S3jrAETKewMJCwdFIOaawPGXWdnN">Youtube</a></p>
+            <!-- Blog -->
+            <div class="modal fade" id="blog" tabindex="-1" role="dialog" aria-labelledby="blog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a href="gamedevblog/index.html">Game Dev Blog</a></h3>
+                        <p class="description">Blog where I share progress and learnings on game development journey.</p>
+                        <p class="description"><a href="gamedevblog/index.html">Blog</a> | <a href="https://github.com/bthomas2622/game-dev-blog">Github</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
                 </div>
             </div>
-            <div class="row is-table-row">
-                <div class="col-lg-5 col-md-5 col-sm-12 entry sharedentry">
-                    <h3><a href="bee-game/welcomeScreen.html">Bee Game</a></h3>
-                    <p class="description">Colony Collapse Disorder (CCD) is a procedurally generated adventure game where you play as an Oakland bee scouring a flower field. You must maintain honey reserves, navigate randomized encounters, and most importantly produce Queen Bees. Programmed with HTML, JS, CSS. Tools used include Knockout, JQuery, Bootstrap, OpenWeatherMap API, GIMP, and Gulp.</p>
-                    <p class="description"><a href="https://github.com/bthomas2622/bee-game">Github</a> | <a href="bee-game/welcomeScreen.html">Game</a></p>
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-0"></div>
-                <div class="col-lg-5 col-md-5 col-sm-12 entry sharedentry">
-                    <h3><a href="https://chrome.google.com/webstore/detail/giant-bomb-game-wiki-righ/obmggdebgoaccpphdefilkalbgkdipna?hl=en-US">Giant Bomb Chrome Extension</a></h3>
-                    <p class="description">This Google Chrome Extension for Giant Bomb and video game fans allows you to right click a highlighted game title in the Google Chrome browser and search that selection in the Giant Bomb Game Wiki. If the highlighted selection matches a game in the wiki database a new window will open on the wiki page for that game. Programmed with JavaScript/JSON. Tools used include JQuery (AJAX), Giant Bomb API, and Chrome Developer API.</p>
-                    <p class="description"><a href="https://github.com/bthomas2622/Giant-Bomb-Chrome-Extension">Github</a> | <a href="https://chrome.google.com/webstore/detail/giant-bomb-game-wiki-righ/obmggdebgoaccpphdefilkalbgkdipna?hl=en-US">Chrome Store</a></p>
+            <!-- GTFS Lab -->
+            <div class="modal fade" id="gtfs" tabindex="-1" role="dialog" aria-labelledby="gtfs" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a href="gtfslab-frontend/index.html">GTFS Lab</a></h3>
+                        <p class="description">GTFS LAB is a data exploration project centered around GTFS (General Transit Feed Specification) data. Public transit is a huge passion of mine and I created GTFS Lab to explore the space. The backend is built with Node.js, Expressjs and MongoDB and hosted on Heroku. The frontend is single-page website built with Reactjs, Bootstrap, and Webpack.</p>
+                        <p class="description"><a href="gtfslab-frontend/index.html">Website</a> | <a href="https://github.com/bthomas2622/gtfs-lab-frontend">Frontend Github</a> | <a href="https://github.com/bthomas2622/gtfs-lab-backend">Backend Github</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
                 </div>
             </div>
-            <div class="row is-table-row">
-                    <div class="col-lg-5 col-md-5 col-sm-12 entry sharedentry">
+            <!-- Space Canoe -->
+            <div class="modal fade" id="space-canoe" tabindex="-1" role="dialog" aria-labelledby="space-canoe" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a href="https://github.com/bthomas2622/space-canoe">Space Canoe</a></h3>
+                        <p class="description">Space Canoe is a 2D arcade style game written in Java using the LibGDX framework. The player uses the left and right arrows (left and right screen touch on mobile) to paddle the canoe away from the perilous space debris. The goal is to survive as long as possible in order to obtain a high "debris dodged" score. Built with LibGDX tools: Box2D, TexturePacker, and FreeType. Art created with Adobe Photoshop.</p>
+                        <p class="description"><a href="https://github.com/bthomas2622/space-canoe">Github</a> | <a href="https://freebrunch.itch.io/space-canoe">itch.io Download</a> | <a href="https://play.google.com/store/apps/details?id=io.github.bthomas2622">Google Play</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Twitch Chatbot -->
+            <div class="modal fade" id="twitch-chatbot" tabindex="-1" role="dialog" aria-labelledby="twitch-chatbot" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a href="https://github.com/bthomas2622/twitchDisposition">Twitch Chatbot</a></h3>
+                        <p class="description">Twitch Disposition is a Twitch IRC Chatbot that performs sentimental analysis in a given Twitch channel. The bot connects to twitch chat through Twitch's Chat API and applies VADER (Valence Aware Dictionary and sEntiment Reasoner), part of the Python "Natural Language Toolkit". The application is presented through "PyQtGraph", a pure-Python graphics library. PyQtGraph leverages the GUI toolkit PyQt5 and the scientific computing package NumPy.</p>
+                        <p><a href="https://github.com/bthomas2622/twitchDisposition">Github</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Photography -->
+            <div class="modal fade" id="photography" tabindex="-1" role="dialog" aria-labelledby="photography" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a href="https://www.flickr.com/gp/150766453@N07/87476x">Photography Portfolio</a></h3>
+                        <p class="description">A collection of my favorite photos. I mainly do nature photography. Photography is a hobby that takes you to extraordinary places. It has helped me connect with nature and better appreciate the beauty in a moment.</p>
+                        <p><a href="https://www.flickr.com/gp/150766453@N07/87476x">Flickr</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- The Queue -->
+            <div class="modal fade" id="the-queue" tabindex="-1" role="dialog" aria-labelledby="the-queue" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a href="https://www.youtube.com/playlist?list=PLPLT9S3jrAETKewMJCwdFIOaawPGXWdnN">The Queue Podcast</a></h3>
+                        <p class="description">Created weekly gaming podcast with two friends. Managed recording schedule, episode planning documents, audio editing, website, art assets, livestream, and RSS/VOD upload.</p>
+                        <p><a href="https://www.youtube.com/playlist?list=PLPLT9S3jrAETKewMJCwdFIOaawPGXWdnN">Youtube</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bee Game -->
+            <div class="modal fade" id="bee-game" tabindex="-1" role="dialog" aria-labelledby="bee-game" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a href="bee-game/welcomeScreen.html">CCD</a></h3>
+                        <p class="description">Colony Collapse Disorder (CCD) is a procedurally generated adventure game where you play as an Oakland bee scouring a flower field. You must maintain honey reserves, navigate randomized encounters, and most importantly produce Queen Bees. Programmed with HTML, JS, CSS. Tools used include Knockout, JQuery, Bootstrap, OpenWeatherMap API, GIMP, and Gulp.</p>
+                        <p class="description"><a href="https://github.com/bthomas2622/bee-game">Github</a> | <a href="bee-game/welcomeScreen.html">Game</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Giant Bomb Chrome Extension -->
+            <div class="modal fade" id="gb" tabindex="-1" role="dialog" aria-labelledby="gb" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a href="https://chrome.google.com/webstore/detail/giant-bomb-game-wiki-righ/obmggdebgoaccpphdefilkalbgkdipna?hl=en-US">Giant Bomb Chrome Extension</a></h3>
+                        <p class="description">This Google Chrome Extension for Giant Bomb and video game fans allows you to right click a highlighted game title in the Google Chrome browser and search that selection in the Giant Bomb Game Wiki. If the highlighted selection matches a game in the wiki database a new window will open on the wiki page for that game. Programmed with JavaScript/JSON. Tools used include JQuery (AJAX), Giant Bomb API, and Chrome Developer API.</p>
+                        <p class="description"><a href="https://github.com/bthomas2622/Giant-Bomb-Chrome-Extension">Github</a> | <a href="https://chrome.google.com/webstore/detail/giant-bomb-game-wiki-righ/obmggdebgoaccpphdefilkalbgkdipna?hl=en-US">Chrome Store</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Nanodegree -->
+            <div class="modal fade" id="nanodegree" tabindex="-1" role="dialog" aria-labelledby="nanodegree" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
                         <h3><a href="https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001">Udacity Front End Web Dev Nanodegree</a></h3>
                         <p class="description"><a href="neighborhood-map-project/index.html">Neighborhood Map</a>: Google Map API Project - <a href="https://github.com/bthomas2622/neighborhood-map-project">Github</a></p>
                         <p class="description"><a href="resume/index.html">Javascript Created Online Resume</a>: JavaScript Project - <a href="https://github.com/bthomas2622/frontend-nanodegree-resume">Github</a></p>
                         <p class="description"><a href="arcade-game/index.html">Classic Arcade Game</a>: Intelligent Object Design Project - <a href="https://github.com/bthomas2622/arcade-game">Github</a></p>
                         <p class="description"><a href="web-optimize/index.html">Website Optimization</a>: Optimization Project - <a href="https://github.com/bthomas2622/frontend-nanodegree-mobile-portfolio">Github</a></p>
                         <p class="description"><a href="frontend-nanodegree-feedreader/index.html">JavaScript Tester: RSS Feed Reader</a>: Code Testing Project - <a href="https://github.com/bthomas2622/frontend-nanodegree-feedreader">Github</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
                 </div>
-                <div class="col-lg-1 col-md-1 col-sm-0"></div>
-                <div class="col-lg-5 col-md-5 col-sm-12 entry sharedentry">
-                    <h3><a href="http://globalgamejam.org/2017/games/press-space-wave">Press Space to Wave</a></h3>
-                    <p class="description">"Press SPACE to Wave" was created during the 2017 Global Game Jam at Google Launchpad in San Francisco. The theme for the game jam was "waves". The team was excited about the prospect of waves as a form of communication between humans and thought that a game about propagating human waves would be a fun project. The game that resulted is a 2D top down local multiplayer game written in Java using the LibGDX framework.</p>
-                    <p class="description"><a href="https://github.com/bthomas2622/team-wave-ggj">Github</a> | <a href="https://freebrunch.itch.io/press-space-to-wave">itch.io Download</a> | <a href="https://play.google.com/store/apps/details?id=com.mygdx.ggjteamwave">Google Play</a></p>
+            </div>
+            <!-- Press Space to Wave -->
+            <div class="modal fade" id="pstw" tabindex="-1" role="dialog" aria-labelledby="pstw" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a href="http://globalgamejam.org/2017/games/press-space-wave">Press Space to Wave</a></h3>
+                        <p class="description">"Press SPACE to Wave" was created during the 2017 Global Game Jam at Google Launchpad in San Francisco. The theme for the game jam was "waves". The team was excited about the prospect of waves as a form of communication between humans and thought that a game about propagating human waves would be a fun project. The game that resulted is a 2D top down local multiplayer game written in Java using the LibGDX framework.</p>
+                        <p class="description"><a href="https://github.com/bthomas2622/team-wave-ggj">Github</a> | <a href="https://freebrunch.itch.io/press-space-to-wave">itch.io Download</a> | <a href="https://play.google.com/store/apps/details?id=com.mygdx.ggjteamwave">Google Play</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>

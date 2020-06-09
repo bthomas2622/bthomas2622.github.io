@@ -55,7 +55,7 @@ div#social {
   font-size: 25px;
 }
 
-div .hero {
+.sorting-buttons {
 	background-color: #4c9dcc87
 }
 
@@ -72,9 +72,9 @@ div .hero {
 .subtitle {
 	text-align: center;
 	font-family: 'Roboto Slab', serif;
-	font-size: 28px;
+	font-size: 32px;
 	margin: 0em;
-	padding: 5px 5px 10px 5px;
+	padding: 5px 5px 5px 5px;
 	color: black;
 	font-weight: bold;
 }
@@ -183,7 +183,7 @@ h2 {
 		font-size: 22px;
 	}
 	.subtitle {
-		font-size: 16px;
+		font-size: 20px;
 	}
 	h1 {
 		font-size: 20px;
@@ -223,7 +223,7 @@ h2 {
 		font-size: 26px;
 	}
 	.subtitle {
-		font-size: 18px;
+		font-size: 22px;
 	}
 	h1 {
 		font-size: 24px;
@@ -242,4 +242,75 @@ h2 {
 	}
 }
 
+.gallery {
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	-webkit-column-width: 33%;
+	-moz-column-width: 33%;
+	column-width: 33%; }
+	.gallery .pics {
+	-webkit-transition: all 350ms ease;
+	transition: all 350ms ease; }
+	.gallery .animation {
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1); }
+	
+	@media (max-width: 450px) {
+		.gallery {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+		-webkit-column-width: 100%;
+		-moz-column-width: 100%;
+		column-width: 100%;
+		}
+	}
+	
+	@media (max-width: 400px) {
+		.btn.filter {
+		padding-left: 1.1rem;
+		padding-right: 1.1rem;
+	}
+}
+
+.image {
+	opacity: 1;
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: .5s ease;
+	backface-visibility: hidden;
+}
+
+.pic-transition {
+	transition: .5s ease;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.pics:hover image {
+	opacity: 0.3;
+}
+
+.pics:hover .pic-transition {
+	opacity: 1;
+}
+
+.btn-light {
+	font-family: 'Roboto Slab', serif;
+	font-weight: bold;
+	margin-right: 3px;
+	margin-left: 3px;
+}
+
+.modal-body {
+	text-align: center;
+}
 
