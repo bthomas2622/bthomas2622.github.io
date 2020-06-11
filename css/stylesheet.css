@@ -135,9 +135,9 @@ h2 {
   max-height: 500px;
   max-width: 500px;
   border: 4px solid whitesmoke;
-  -webkit-border-radius: 5%;
-  -moz-border-radius: 5%;
-  border-radius: 5%;
+  -webkit-border-radius: 3%;
+  -moz-border-radius: 3%;
+  border-radius: 3%;
 }
 
 .img-padding {
@@ -158,25 +158,68 @@ h2 {
 	height: auto;
 	transition: .5s ease;
 	backface-visibility: hidden;
+	border: 4px solid black;
+	-webkit-border-radius: 3%;
+	-moz-border-radius: 3%;
+	border-radius: 3%;
 }
 
-.pic-transition {
-	transition: .5s ease;
-	opacity: 0;
+.image:hover {
+	border: 4px solid whitesmoke;
+}
+
+#notgButton:hover ~ #notgPic {
+	border: 4px solid whitesmoke;
+}
+
+#gtfsButton:hover ~ #gtfsPic {
+	border: 4px solid whitesmoke;
+}
+
+#space-canoeButton:hover ~ #space-canoePic {
+	border: 4px solid whitesmoke;
+}
+
+#twitch-chatbotButton:hover ~ #twitch-chatbotPic {
+	border: 4px solid whitesmoke;
+}
+
+#ccdButton:hover ~ #ccdPic {
+	border: 4px solid whitesmoke;
+}
+
+#game-dev-blogButton:hover ~ #game-dev-blogPic {
+	border: 4px solid whitesmoke;
+}
+
+#photographyButton:hover ~ #photographyPic {
+	border: 4px solid whitesmoke;
+}
+
+#pstwButton:hover ~ #pstwPic {
+	border: 4px solid whitesmoke;
+}
+
+#nanodegreeButton:hover ~ #nanodegreePic {
+	border: 4px solid whitesmoke;
+}
+
+#gbButton:hover ~ #gbPic {
+	border: 4px solid whitesmoke;
+}
+
+#the-queueButton:hover ~ #the-queuePic {
+	border: 4px solid whitesmoke;
+}
+
+.pic-modal {
+	opacity: 1;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
 	text-align: center;
-}
-
-.pics:hover image {
-	opacity: 0.3;
-}
-
-.pics:hover .pic-transition {
-	opacity: 1;
 }
 
 .modal-body {

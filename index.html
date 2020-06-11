@@ -30,12 +30,49 @@
                 $(".filter").click(function(){
                     selectedClass = $(this).attr("data-rel");
                     $("#gallery").fadeTo(100, 0.1);
-                    $("#gallery div").not("." + selectedClass + "," + ".pic-transition").fadeOut().removeClass('animation');
+                    $("#gallery div").not("." + selectedClass + "," + ".pic-modal").fadeOut().removeClass('animation');
                     setTimeout(function() {
                         $("."+selectedClass).fadeIn().addClass('animation');
                         $("#gallery").fadeTo(300, 1);
                     }, 300);
                 });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("div").on('click','#notgPic',function () {
+                    $('#notg').modal('show'); 
+                });   
+                $("div").on('click','#gtfsPic',function () {
+                    $('#gtfs').modal('show'); 
+                });   
+                $("div").on('click','#space-canoePic',function () {
+                    $('#space-canoe').modal('show'); 
+                });   
+                $("div").on('click','#twitch-chatbotPic',function () {
+                    $('#twitch-chatbot').modal('show'); 
+                });   
+                $("div").on('click','#ccdPic',function () {
+                    $('#bee-game').modal('show'); 
+                });   
+                $("div").on('click','#the-queuePic',function () {
+                    $('#the-queue').modal('show'); 
+                });   
+                $("div").on('click','#game-dev-blogPic',function () {
+                    $('#blog').modal('show'); 
+                });   
+                $("div").on('click','#photographyPic',function () {
+                    $('#photography').modal('show'); 
+                });   
+                $("div").on('click','#pstwPic',function () {
+                    $('#pstw').modal('show'); 
+                });   
+                $("div").on('click','#gbPic',function () {
+                    $('#gb').modal('show'); 
+                });   
+                $("div").on('click','#nanodegreePic',function () {
+                    $('#nanodegree').modal('show'); 
+                });   
             });
         </script>
     </head>
@@ -71,70 +108,70 @@
         <div class="container">
             <div class="gallery mt-3" id="gallery">
                 <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid image" src="images/projects/healthHive16x9.png" alt="Nectar of the Gods">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="notgButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#notg">Nectar of the Gods</btn>
                     </div>    
+                    <img class="img-fluid image" src="images/projects/healthHive16x9.png" alt="Nectar of the Gods" id="notgPic">
                 </div>
                 <div class="mb-3 pics animation all 4">
-                    <img class="img-fluid image" src="images/projects/gtfs-lab.PNG" alt="GTFS Lab">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="gtfsButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#gtfs">GTFS Lab</btn>
                     </div>   
+                    <img class="img-fluid image" src="images/projects/gtfs-lab.PNG" alt="GTFS Lab" id="gtfsPic">
                 </div>
                 <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid image" src="images/projects/space-canoe.png" alt="Space Canoe">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="space-canoeButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#space-canoe">Space Canoe</btn>
                     </div>   
+                    <img class="img-fluid image" src="images/projects/space-canoe.png" alt="Space Canoe" id="space-canoePic">
                 </div>
                 <div class="mb-3 pics animation all 4">
-                    <img class="img-fluid image" src="images/projects/twitchdisposition.JPG" alt="Twitch Disposition">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="twitch-chatbotButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#twitch-chatbot">Twitch Chatbot</btn>
                     </div>   
+                    <img class="img-fluid image" src="images/projects/twitchdisposition.JPG" alt="Twitch Disposition" id="twitch-chatbotPic">
                 </div>
                 <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid image" src="images/projects/phorid400.png" alt="Bee Game">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="ccdButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#bee-game">Colony Collapse Disorder</btn>
                     </div>   
+                    <img class="img-fluid image" src="images/projects/phorid400.png" alt="Bee Game" id="ccdPic">
                 </div>
                 <div class="mb-3 pics animation all 3">
-                    <img class="img-fluid image" src="images/projects/the-queue.jpg" alt="The Queue">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="the-queueButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#the-queue">The Queue Podcast</btn>
                     </div>   
+                    <img class="img-fluid image" src="images/projects/the-queue.jpg" alt="The Queue" id="the-queuePic">
                 </div>
                 <div class="mb-3 pics animation all 2">
-                    <img class="img-fluid image" src="images/projects/gamedevblog.PNG" alt="Game Dev Blog">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="game-dev-blogButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#blog">Game Dev Blog</btn>
                     </div>   
+                    <img class="img-fluid image" src="images/projects/gamedevblog.PNG" alt="Game Dev Blog" id="game-dev-blogPic">
                 </div>
                 <div class="mb-3 pics animation all 3">
-                    <img class="img-fluid image" src="images/projects/photography.jpg" alt="Photography Portfolio">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="photographyButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#photography">Photography Portfolio</btn>
                     </div>   
+                    <img class="img-fluid image" src="images/projects/photography.jpg" alt="Photography Portfolio" id="photographyPic">
                 </div>
                 <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid image" src="images/projects/pstw.png" alt="Press Space to Wave">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="pstwButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#pstw">Press Space to Wave</btn>
                     </div>   
+                    <img class="img-fluid image" src="images/projects/pstw.png" alt="Press Space to Wave" id="pstwPic">
                 </div>
                 <div class="mb-3 pics animation all 4">
-                    <img class="img-fluid image" src="images/projects/ExampleUsage.JPG" alt="Giant Bomb Chrome Extension">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="gbButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#gb">GiantBomb Chrome Extension</btn>
                     </div>   
+                    <img class="img-fluid image" src="images/projects/ExampleUsage.JPG" alt="Giant Bomb Chrome Extension" id="gbPic">
                 </div>
                 <div class="mb-3 pics animation all 4">
-                    <img class="img-fluid image" src="images/projects/neighmap.JPG" alt="Front End Nanodegree">
-                    <div class="pic-transition">
+                    <div class="pic-modal" id="nanodegreeButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#nanodegree">Udacity Front End Nanodegree</btn>
                     </div>   
+                    <img class="img-fluid image" src="images/projects/neighmap.JPG" alt="Front End Nanodegree" id="nanodegreePic">
                 </div>
             </div>
             <!-- Modals -->
