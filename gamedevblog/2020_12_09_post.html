@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147640575-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-147640575-1');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ben thomas game development blog">
+  <meta name="author" content="Ben Thomas">
+
+  <title>BT Blog</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        More
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="games.html">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/basic-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Facepunch.Steamworks Unity Tutorial</h1>
+            <span class="meta">Posted by
+              <a href="about.html">Ben Thomas</a>
+              on December 9, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p><b>This is a tutorial for how to use “Facepunch.Steamworks”, a Steamworks C# wrapper, to implement P2P multiplayer and other Steamworks features in a Unity game.</b></p>
+          <p>I found the Facepunch.Steamworks documentation to be very good, but found very few code examples on the internet so I wanted to write this in case it can be helpful for anyone as a jumping off point.</p>
+          <p>You will need to know you’re way around some Unity C# and have some eagerness to jump into Facepunch.Steamworks and Steamworks documentation.</p>
+          <p>Feel free to reach out with questions I am <a href="https://twitter.com/freebrunch">@freeBrunch</a> on Twitter.</p>
+          <p><b><u>Links:</u></b></p>
+          <ul>
+            <li><a style="color: blueviolet; font-weight: bold;" href="https://github.com/bthomas2622/facepunch-steamworks-tutorial">Tutorial code</a></li>
+            <li><a style="color: blueviolet; font-weight: bold;" href="https://wiki.facepunch.com/steamworks/">Facepunch.Steamworks wiki</a></li>
+            <li><a style="color: blueviolet; font-weight: bold;" href="https://github.com/Facepunch/Facepunch.Steamworks">Facepunch.Steamworks github</a></li>
+            <li><a style="color: blueviolet; font-weight: bold;" href="https://partner.steamgames.com/doc/home">Steamworks docs</a></li>
+            <li><a style="color: blueviolet; font-weight: bold;" href="https://creeepling.itch.io/beat-loot-repeat/devlog/148487/adding-steamworks-p2p-multiplayer-can-be-a-pain-but">Creeepling itch.io Steamworks P2P Devlog</a></li>
+            <li><a style="color: blueviolet; font-weight: bold;" href="https://store.steampowered.com/app/1421410/Nectar_of_the_Gods/">Nectar of the Gods Steam page</a></li>
+          </ul>
+          <p><a href="https://store.steampowered.com/app/1421410/Nectar_of_the_Gods/">Nectar of the Gods</a> was always going to be an online multiplayer game. I love multiplayer games and wanted to make something I could play with friends. But I had a few obstacles to overcome as a first time independent developer:</p>
+          <ol>
+            <li>I had never written any netcode.</li>
+            <li>Unity networking support seemed extrememly limited.</li>
+            <li>I was hoping to do “Peer 2 Peer” networking rather than “Client Server” because I have no budget for dedicated servers and steady income to support them from an indie game can be elusive.</li>
+            <li>My hope was to use something open source.</li>
+          </ol>
+          <p>A lot of people in my initial research were recommending using <a href="https://partner.steamgames.com/doc/features/multiplayer">Steamworks</a> to do the netcode heavy lifting. Steam offers free backend APIs via Steamworks to help you set up things like game lobbies, P2P packet management, etc. The downside was that I could only distribute my game through Steam to take advantage of this online implementation. This was a worth it tradeoff for me though because I was making a PC game, Steam is a great marketplace, and without much resources Steamworks was a life saver.</p>
+          <p>Buuut Steamworks is written in C++, so to use it with Unity I would need to use a C# wrapper. And it appeared the latest and greatest Steamworks C# implementation was a MIT open source project created by Garry Newman (of Garry’s Mod) called “Facepunch.Steamworks”. The most recent release as of this writing was February 28, 2020 but it does seem to still be active with contributions.</p>
+          <h2 class="section-heading">Prerequisites</h2>
+          <ul>
+            <li>You will need valid Steam AppID by <a style="color: blueviolet; font-weight: bold;" href="https://partner.steamgames.com/doc/store/application">paying Steam app fee</a></li>
+            <li><a style="color: blueviolet; font-weight: bold;" href="https://wiki.facepunch.com/steamworks/Setting_Up">Facepunch.Steamworks Install + Setup</a></li>
+          </ul>
+          <h2 class="section-heading">Getting Started</h2>
+          <p>I essentially managed all my Steamworks functions and statuses in a singleton created at app startup called <b>SteamManager.cs</b>.</p>
+          <p>In the <b>Awake()</b> function I setup my Singleton, and initialize my Steam Client with <b>SteamClient.Init</b>.</p>
+          <pre>
+            <code>
+              public void Awake()
+                {
+                    if (Instance == null)
+                    {
+                        daRealOne = true;
+                        DontDestroyOnLoad(gameObject);
+                        Instance = this;
+                        PlayerName = "";
+                        try
+                        {
+                            // Create client
+                            SteamClient.Init(gameAppId, true);
+  
+                            if (!SteamClient.IsValid)
+                            {
+                                Debug.Log("Steam client not valid");
+                                throw new Exception();
+                            }
+  
+                            PlayerName = SteamClient.Name;
+                            PlayerSteamId = SteamClient.SteamId;
+                            playerSteamIdString = PlayerSteamId.ToString();
+                            activeUnrankedLobbies = new List<Lobby>();
+                            activeRankedLobbies = new List<Lobby>();
+                            connectedToSteam = true;
+                            Debug.Log("Steam initialized: " + PlayerName);
+                        }
+                        catch (Exception e)
+                        {
+                            connectedToSteam = false;
+                            playerSteamIdString = "NoSteamId";
+                            Debug.Log("Error connecting to Steam");
+                            Debug.Log(e);
+                        }
+                    }
+                    else if (Instance != this)
+                    {
+                        Destroy(gameObject);
+                    }
+                }
+            </code>
+          </pre>
+          <p>The Facepunch.Steamworks architecture mainly centers around creating “events/actions” when a Steam thing happens. You write functions to handle these events and define them in your Awake() or Start() method. You need to run <b>SteamClient.RunCallbacks()</b> in your <b>Update()</b> method to field these Steam events. </p>
+          <p>Below you can see all the callbacks I’ve defined to handle different Steam events around multiplayer, etc.</p>
+          <pre>
+            <code>
+              void Start()
+              {
+                  // Callbacks
+                  SteamMatchmaking.OnLobbyGameCreated += OnLobbyGameCreatedCallback;
+                  SteamMatchmaking.OnLobbyCreated += OnLobbyCreatedCallback;
+                  SteamMatchmaking.OnLobbyEntered += OnLobbyEnteredCallback;
+                  SteamMatchmaking.OnLobbyMemberJoined += OnLobbyMemberJoinedCallback;
+                  SteamMatchmaking.OnChatMessage += OnChatMessageCallback;
+                  SteamMatchmaking.OnLobbyMemberDisconnected += OnLobbyMemberDisconnectedCallback;
+                  SteamMatchmaking.OnLobbyMemberLeave += OnLobbyMemberLeaveCallback;
+                  SteamFriends.OnGameLobbyJoinRequested += OnGameLobbyJoinRequestedCallback;
+                  SteamApps.OnDlcInstalled += OnDlcInstalledCallback;
+                  SceneManager.sceneLoaded += OnSceneLoaded;
+              }
+          
+              void Update()
+              {
+                  SteamClient.RunCallbacks();
+              }           
+            </code>
+          </pre>
+          <p>And then in either your OnDisable, OnDestroy, or OnApplicationQuit you will want to shut down the Steam client. I use “daRealOne” bool to make sure I only shut down the SteamClient when my singleton is being destroyed, not when I am destroying an instance because it is not my singleton.</p>
+          <pre>
+            <code>
+              void OnDisable()
+              {
+                  if (daRealOne)
+                  {
+                      leaveLobby();
+                      SteamClient.Shutdown();
+                  }
+              }          
+            </code>
+          </pre>
+          <h2 class="section-heading">Core Loop</h2>
+          <p>I’m not gonna go through every single callback I’ve defined. I recommend looking at the full example code to explore each one. But I will examine an example core loop of:</p>
+          <ol>
+            <li>Create multiplayer lobby</li>
+            <li>Another player joins lobby after searching for it</li>
+            <li>All lobby players accept P2P session with each other</li>
+            <li>Game starts and players send packets to each other</li>
+            <li>Lobby cleanup</li>
+          </ol>
+          <h3 class="section-heading">Create multiplayer lobby</h3>
+          <p>Creating a lobby is done with <b>"await SteamMatchmaking.CreateLobbyAsync(2)"</b> where 2 is the max number of players the lobby can hold. If the output of this async method <b>".HasValue"</b> then the lobby was correctly created. A Steamworks Lobby object has a bunch of parameters that can be edited, as well as custom parameters that can be set with <b>"SetData"</b>.</p>
+          <pre>
+            <code>
+              public async Task<bool> CreateLobby(int lobbyParameters)
+                {
+                    try
+                    {
+                        var createLobbyOutput = await SteamMatchmaking.CreateLobbyAsync(2);
+                        if (!createLobbyOutput.HasValue)
+                        {
+                            Debug.Log("Lobby created but not correctly instantiated");
+                            throw new Exception();
+                        }
+            
+                        LobbyPartnerDisconnected = false;
+                        hostedMultiplayerLobby = createLobbyOutput.Value;
+                        hostedMultiplayerLobby.SetPublic();
+                        hostedMultiplayerLobby.SetJoinable(true);
+                        hostedMultiplayerLobby.SetData(staticDataString, lobbyParameters)
+            
+                        currentLobby = hostedMultiplayerLobby;
+            
+                        return true;
+                    }
+                    catch (Exception exception)
+                    {
+                        Debug.Log("Failed to create multiplayer lobby");
+                        Debug.Log(exception.ToString());
+                        return false;
+                    }
+                }            
+            </code>
+          </pre>
+          <h3 class="section-heading">Another player joins lobby after searching for it</h3>
+          <p>The way I populate lobbies a player can join in my game is:</p>
+          <pre><code>Lobby[] lobbies = await SteamMatchmaking.LobbyList</code></pre>
+          <p>In my game I display these lobbies as options to the player looking for a game, but you could handle all this in the background if you wanted to go with a more matchmaking approach.</p>
+          <p>I refined my lobby search with parameters like <b>"WithMaxResults"</b> and <b>"WithKeyValue"</b> to separate my ranked and unranked lobbies.</p>
+          <pre>
+            <code>
+              public async Task<bool> RefreshMultiplayerLobbies(bool ranked)
+                {
+                    try
+                    {
+                        if (ranked)
+                        {
+                            activeRankedLobbies.Clear();
+                            Lobby[] lobbies = await SteamMatchmaking.LobbyList.WithMaxResults(20).WithKeyValue(isRankedDataString, TRUE).OrderByNear(playerEloDataString, playerElo).RequestAsync();
+                            if (lobbies != null)
+                            {
+                                foreach (Lobby lobby in lobbies.ToList())
+                                {
+                                    activeRankedLobbies.Add(lobby);
+                                }
+                            }
+                            return true;
+                        }
+                        else
+                        {
+                            activeUnrankedLobbies.Clear();
+                            Lobby[] lobbies = await SteamMatchmaking.LobbyList.WithMaxResults(20).WithKeyValue(isRankedDataString, FALSE).RequestAsync();
+                            if (lobbies != null)
+                            {
+                                foreach (Lobby lobby in lobbies.ToList())
+                                {
+                                    activeUnrankedLobbies.Add(lobby);
+                                }
+                            }
+                            return true;
+                        }
+                    } catch (Exception e)
+                    {
+                        Debug.Log(e.ToString());
+                        Debug.Log("Error fetching multiplayer lobbies");
+                        return true;
+                    }
+                }            
+            </code>
+          </pre>
+          <p>Join lobby with:</p>
+          <pre>
+            <code>
+              RoomEnter joinedLobbySuccess = await joinedLobby.Join();
+              if (joinedLobbySuccess != RoomEnter.Success)
+              {
+                  Debug.Log("failed to join lobby");
+              }      
+            </code>
+          </pre>
+          <h3 class="section-heading">All lobby players accept P2P session with each other</h3>
+          <p>I kinda stumbled into this implementation and my code has different ways of doing this. There are a lot of different callbacks that can be used for when a player joins a lobby. The main thing is the SteamIds need to be exchanged so that each player can call:</p>
+          <pre><code>SteamNetworking.AcceptP2PSessionWithUser(opponentSteamId);</code></pre>
+          <p>One of the ways I exchange SteamIds is with the <b>OnLobbyMemberJoined</b> callback. So the host gets the joining player SteamId and AcceptsP2P on it. And the person joining can AcceptP2P on <b>Lobby.Owner.id</b></p>
+          <pre>
+            <code>
+              void OnLobbyMemberJoinedCallback(Lobby lobby, Friend friend)
+              {
+                  Debug.Log("someone else joined lobby");
+                  if (friend.Id != PlayerSteamId)
+                  {
+                      LobbyPartner = friend;
+                      OpponentSteamId = friend.Id;
+                      SteamNetworking.AcceptP2PSessionWithUser(OpponentSteamId);
+                  }
+              }          
+            </code>
+          </pre>
+          <h3 class="section-heading">Game starts and both players send packets to each other</h3>
+          <p>There are few ways for the host of a lobby to let other members know that it’s time to start the game. They can call <b>“lobby.SetGameServer(PlayerSteamId);”</b> and trigger everyone’s <b>OnLobbyGameCreated</b> callback.</p>
+          <pre><code>SteamMatchmaking.OnLobbyGameCreated += OnLobbyGameCreatedCallback;</code></pre>
+          <p>Or you could communicate with chat messages api, etc.</p>
+          <p>After the game has started I have a GameObject (not SteamManager.cs) in my game scene that receives and sends data packets. To receive data packets I use:</p>
+          <pre>
+            <code>
+              void Awake()
+              {
+                  // Check every 0.05 seconds for new packets
+                  InvokeRepeating("ReceiveDataPacket", 0f, 0.05f);
+              }
+          
+          
+              void ReceiveDataPacket()
+              {
+                  while (SteamNetworking.IsP2PPacketAvailable())
+                  {
+                      var packet = SteamNetworking.ReadP2PPacket();
+                      if (packet.HasValue)
+                      {
+                          HandleOpponentDataPacket(packet.Value.Data);
+                      }
+                  }
+              }          
+            </code>
+          </pre>
+          <p>And to send data packets I use:</p>
+          <pre><code>SteamNetworking.SendP2PPacket(opponentSteamId, dataToSend);</code></pre>
+          <pre>
+            <code>
+              public void SendAdHocData(string adHocData)
+               {
+                   if (!SteamManager.Instance.LobbyPartnerDisconnected)
+                   {
+                       string dataToSend = adHocData;
+                       var sent = SteamNetworking.SendP2PPacket(opponentSteamId, ConvertStringToByteArray(dataToSend));
+                       if (!sent)
+                       {
+                           var sent2 = SteamNetworking.SendP2PPacket(opponentSteamId, ConvertStringToByteArray(dataToSend));
+                           if (!sent2)
+                           {
+                               thingsThatFailedToSend.Add(ConvertStringToByteArray(dataToSend));
+                           }
+                       }
+                   }
+               }           
+            </code>
+          </pre>
+          <h3 class="section-heading">Lobby Cleanup</h3>
+          <p>Lobby / Game Server are garbage collected automatically when both players call “Leave()” on a Steamworks Lobby object (which is cached in SteamManager singleton). This is why it’s important to call “leaveLobby” on onDestroy(), and when a player quits, and any other case that represents a player leaving a session.</p>
+          <h2 class="section-heading">The End</h2>
+          <p>And that’s the core loop! Checkout the <a href="https://github.com/bthomas2622/facepunch-steamworks-tutorial">full boilerplate code</a> in the github repo. It has things like inviting a friend to a game lobby, unlocking achievements, setting steam rich presence, etc. Things like achievements and rich presence also need to be configured on the Steam end of things.</p>
+          <p>I hope this is helpful! Suggest edits to me <a href="https://twitter.com/freebrunch">@freeBrunch</a> on Twitter.</p>
+          <p>Plug for my game <a href="https://store.steampowered.com/app/1421410/Nectar_of_the_Gods/">Nectar of the Gods</a> on Steam.</p>
+          <p><i><b>"An unquenchable multiplayer real-time strategy game where bugs clash over the sweet nectar of sugary beverages. From Beetle Brigade to Spidey Party, you will artfully master strengths and shortcomings to topple boba shops and coffee bars. The countertop mayhem has begun."</b></i></p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+                <a href="https://freebrunch.itch.io/">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-itch-io fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/freebrunch">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

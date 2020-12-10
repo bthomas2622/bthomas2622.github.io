@@ -28,7 +28,8 @@ p {
 }
 
 p a {
-  text-decoration: underline;
+  font-weight: bold;
+  color: blueviolet;
 }
 
 h1,
