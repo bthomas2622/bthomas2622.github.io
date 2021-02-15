@@ -84,15 +84,15 @@
           <p><b>This is a tutorial for how to use “Facepunch.Steamworks”, a Steamworks C# wrapper, to implement P2P multiplayer and other Steamworks features in a Unity game.</b></p>
           <p>I found the Facepunch.Steamworks documentation to be very good, but found very few code examples on the internet so I wanted to write this in case it can be helpful for anyone as a jumping off point.</p>
           <p>You will need to know you’re way around some Unity C# and have some eagerness to jump into Facepunch.Steamworks and Steamworks documentation.</p>
-          <p>Feel free to reach out with questions I am <a href="https://twitter.com/freebrunch">@freeBrunch</a> on Twitter.</p>
+          <p>Feel free to reach out with questions I am <a target="_blank" rel="noopener noreferrer"  href="https://twitter.com/freebrunch">@freeBrunch</a> on Twitter.</p>
           <p><b><u>Links:</u></b></p>
           <ul>
-            <li><a style="color: blueviolet; font-weight: bold;" href="https://github.com/bthomas2622/facepunch-steamworks-tutorial">Tutorial code</a></li>
-            <li><a style="color: blueviolet; font-weight: bold;" href="https://wiki.facepunch.com/steamworks/">Facepunch.Steamworks wiki</a></li>
-            <li><a style="color: blueviolet; font-weight: bold;" href="https://github.com/Facepunch/Facepunch.Steamworks">Facepunch.Steamworks github</a></li>
-            <li><a style="color: blueviolet; font-weight: bold;" href="https://partner.steamgames.com/doc/home">Steamworks docs</a></li>
-            <li><a style="color: blueviolet; font-weight: bold;" href="https://creeepling.itch.io/beat-loot-repeat/devlog/148487/adding-steamworks-p2p-multiplayer-can-be-a-pain-but">Creeepling itch.io Steamworks P2P Devlog</a></li>
-            <li><a style="color: blueviolet; font-weight: bold;" href="https://store.steampowered.com/app/1421410/Nectar_of_the_Gods/">Nectar of the Gods Steam page</a></li>
+            <li><a target="_blank" rel="noopener noreferrer"  style="color: blueviolet; font-weight: bold;" href="https://github.com/bthomas2622/facepunch-steamworks-tutorial">Tutorial code</a></li>
+            <li><a target="_blank" rel="noopener noreferrer"  style="color: blueviolet; font-weight: bold;" href="https://wiki.facepunch.com/steamworks/">Facepunch.Steamworks wiki</a></li>
+            <li><a target="_blank" rel="noopener noreferrer"  style="color: blueviolet; font-weight: bold;" href="https://github.com/Facepunch/Facepunch.Steamworks">Facepunch.Steamworks github</a></li>
+            <li><a target="_blank" rel="noopener noreferrer"  style="color: blueviolet; font-weight: bold;" href="https://partner.steamgames.com/doc/home">Steamworks docs</a></li>
+            <li><a target="_blank" rel="noopener noreferrer"  style="color: blueviolet; font-weight: bold;" href="https://creeepling.itch.io/beat-loot-repeat/devlog/148487/adding-steamworks-p2p-multiplayer-can-be-a-pain-but">Creeepling itch.io Steamworks P2P Devlog</a></li>
+            <li><a target="_blank" rel="noopener noreferrer"  style="color: blueviolet; font-weight: bold;" href="https://store.steampowered.com/app/1421410/Nectar_of_the_Gods/">Nectar of the Gods Steam page</a></li>
           </ul>
           <p><a href="https://store.steampowered.com/app/1421410/Nectar_of_the_Gods/">Nectar of the Gods</a> was always going to be an online multiplayer game. I love multiplayer games and wanted to make something I could play with friends. But I had a few obstacles to overcome as a first time independent developer:</p>
           <ol>
@@ -101,12 +101,12 @@
             <li>I was hoping to do “Peer 2 Peer” networking rather than “Client Server” because I have no budget for dedicated servers and steady income to support them from an indie game can be elusive.</li>
             <li>My hope was to use something open source.</li>
           </ol>
-          <p>A lot of people in my initial research were recommending using <a href="https://partner.steamgames.com/doc/features/multiplayer">Steamworks</a> to do the netcode heavy lifting. Steam offers free backend APIs via Steamworks to help you set up things like game lobbies, P2P packet management, etc. The downside was that I could only distribute my game through Steam to take advantage of this online implementation. This was a worth it tradeoff for me though because I was making a PC game, Steam is a great marketplace, and without much resources Steamworks was a life saver.</p>
+          <p>A lot of people in my initial research were recommending using <a target="_blank" rel="noopener noreferrer"  href="https://partner.steamgames.com/doc/features/multiplayer">Steamworks</a> to do the netcode heavy lifting. Steam offers free backend APIs via Steamworks to help you set up things like game lobbies, P2P packet management, etc. The downside was that I could only distribute my game through Steam to take advantage of this online implementation. This was a worth it tradeoff for me though because I was making a PC game, Steam is a great marketplace, and without much resources Steamworks was a life saver.</p>
           <p>Buuut Steamworks is written in C++, so to use it with Unity I would need to use a C# wrapper. And it appeared the latest and greatest Steamworks C# implementation was a MIT open source project created by Garry Newman (of Garry’s Mod) called “Facepunch.Steamworks”. The most recent release as of this writing was February 28, 2020 but it does seem to still be active with contributions.</p>
           <h2 class="section-heading">Prerequisites</h2>
           <ul>
-            <li>You will need valid Steam AppID by <a style="color: blueviolet; font-weight: bold;" href="https://partner.steamgames.com/doc/store/application">paying Steam app fee</a></li>
-            <li><a style="color: blueviolet; font-weight: bold;" href="https://wiki.facepunch.com/steamworks/Setting_Up">Facepunch.Steamworks Install + Setup</a></li>
+            <li>You will need valid Steam AppID by <a target="_blank" rel="noopener noreferrer"  style="color: blueviolet; font-weight: bold;" href="https://partner.steamgames.com/doc/store/application">paying Steam app fee</a></li>
+            <li><a target="_blank" rel="noopener noreferrer"  style="color: blueviolet; font-weight: bold;" href="https://wiki.facepunch.com/steamworks/Setting_Up">Facepunch.Steamworks Install + Setup</a></li>
           </ul>
           <h2 class="section-heading">Getting Started</h2>
           <p>I essentially managed all my Steamworks functions and statuses in a singleton created at app startup called <b>SteamManager.cs</b>.</p>
@@ -362,9 +362,9 @@
           <h3 class="section-heading">Lobby Cleanup</h3>
           <p>Lobby / Game Server are garbage collected automatically when both players call “Leave()” on a Steamworks Lobby object (which is cached in SteamManager singleton). This is why it’s important to call “leaveLobby” on onDestroy(), and when a player quits, and any other case that represents a player leaving a session.</p>
           <h2 class="section-heading">The End</h2>
-          <p>And that’s the core loop! Checkout the <a href="https://github.com/bthomas2622/facepunch-steamworks-tutorial">full boilerplate code</a> in the github repo. It has things like inviting a friend to a game lobby, unlocking achievements, setting steam rich presence, etc. Things like achievements and rich presence also need to be configured on the Steam end of things.</p>
-          <p>I hope this is helpful! Suggest edits to me <a href="https://twitter.com/freebrunch">@freeBrunch</a> on Twitter.</p>
-          <p>Plug for my game <a href="https://store.steampowered.com/app/1421410/Nectar_of_the_Gods/">Nectar of the Gods</a> on Steam.</p>
+          <p>And that’s the core loop! Checkout the <a target="_blank" rel="noopener noreferrer"  href="https://github.com/bthomas2622/facepunch-steamworks-tutorial">full boilerplate code</a> in the github repo. It has things like inviting a friend to a game lobby, unlocking achievements, setting steam rich presence, etc. Things like achievements and rich presence also need to be configured on the Steam end of things.</p>
+          <p>I hope this is helpful! Suggest edits to me <a target="_blank" rel="noopener noreferrer"  href="https://twitter.com/freebrunch">@freeBrunch</a> on Twitter.</p>
+          <p>Plug for my game <a target="_blank" rel="noopener noreferrer"  href="https://store.steampowered.com/app/1421410/Nectar_of_the_Gods/">Nectar of the Gods</a> on Steam.</p>
           <p><i><b>"An unquenchable multiplayer real-time strategy game where bugs clash over the sweet nectar of sugary beverages. From Beetle Brigade to Spidey Party, you will artfully master strengths and shortcomings to topple boba shops and coffee bars. The countertop mayhem has begun."</b></i></p>
         </div>
       </div>
@@ -380,7 +380,7 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <ul class="list-inline text-center">
             <li class="list-inline-item">
-                <a href="https://freebrunch.itch.io/">
+                <a target="_blank" rel="noopener noreferrer"  href="https://freebrunch.itch.io/">
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fab fa-itch-io fa-stack-1x fa-inverse"></i>
@@ -388,7 +388,7 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="https://twitter.com/freebrunch">
+                <a target="_blank" rel="noopener noreferrer"  href="https://twitter.com/freebrunch">
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147640575-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-147640575-1');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ben thomas game development blog">
+  <meta name="author" content="Ben Thomas">
+
+  <title>BT Blog</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        More
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="games.html">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/basic-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Unity 2020 2D Starter Kit</h1>
+            <span class="meta">Posted by
+              <a href="about.html">Ben Thomas</a>
+              on February 15, 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p><a href="https://github.com/bthomas2622/unity-2d-starter-kit">GITHUB REPO</a></p>
+          <h1 id="unity-2020-2d-starter-kit">Unity 2020 2D Starter Kit</h1>
+    <p>This &quot;Unity 2020 2D Starter Kit&quot; project is designed to help Unity developers / jammers hit the ground running on a 2D game. It contains a simple main menu with the following features: </p>
+    <ol>
+    <li><strong>New Unity Input System</strong> configured for mouse + keyboard + gamepad input and remappable controls</li>
+    <li><strong>Player Settings</strong> capable of saving preferences for fullscreen/windowed, music volume, effects volume, keyboard mappings, gamepad mappings, and language.</li>
+    <li><strong>Audio Manager</strong> for playing music and sounds   </li>
+    <li><strong>Localization Manager</strong> for seamless switching between languages</li>
+    </ol>
+    <p>I did my best to provide context about the contents of the starter kit in this <a href="https://github.com/bthomas2622/unity-2d-starter-kit#readme">README</a>. But this is not a step-by-step tutorial, it is a downloadable Unity Project that can be explored to learn/leverage the tools contained. </p>
+    <p>Feel free to reach out with questions I am <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/freebrunch">@freebrunch</a> on Twitter.</p>
+    <h1 id="input-system">Input System</h1>
+    <h4 id="helpful-links">Helpful Links</h4>
+    <ol>
+    <li><a style="color: blueviolet; font-weight: bold;" target="_blank" rel="noopener noreferrer" href="https://youtu.be/dUCcZrPhwSo">Dapper Dino - Key rebinding tutorial for new Unity Input System</a></li>
+    <li><a style="color: blueviolet; font-weight: bold;" target="_blank" rel="noopener noreferrer" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/QuickStartGuide.html">Official new Unity Input System Docs</a></li>
+    </ol>
+    <p>I used the <a target="_blank" rel="noopener noreferrer" href="https://blogs.unity3d.com/2019/10/14/introducing-the-new-input-system/">new Unity Input System</a> for handling player input. It abstracts from specific hardware making it easy to define behavior for any mouse, keyboard, or gamepad regardless of hardware differences. </p>
+    <p>The new Unity Input System holds mappings in a dedicated <strong>Input Action</strong> asset found in the <em>Assets/Actions/</em> folder in either C# or Unity file form. You can double click the Unity file where you can use the GUI to define <strong>Actions</strong> then map forms of input to them. </p>
+    <p>In my scene I have a <strong>PlayerInput</strong> (Singleton) game object with a <em>Player Input</em> component where this Input Action asset is assigned and configured to <em>&quot;Invoke Unity Events&quot;</em>. This project has keyboard/gamepad actions defined for:</p>
+    <ol>
+    <li>Move (Up, Down, Left Right)</li>
+    <li>Select </li>
+    <li>Back</li>
+    </ol>
+    <p>And mouse actions defined for point and click. </p>
+    <p>Then I have a <strong>PlayerInputHandler</strong> (Singleton) game object that listens to the player input events and passes them along to the <strong>&quot;Scene Controller&quot;</strong> to situationally do what is needed with the input. A &quot;Scene Controller&quot; is a pattern I use to respond to the input differently in each Unity scene. </p>
+    <h3 id="remapping-controls">Remapping Controls</h3>
+    <p>I have a script called <strong>ControlsBindingText.cs</strong> that is placed on text game objects in the controls view. Each object corresponds to a different input mapping (select, up, etc.). When one of these mappings is &quot;selected&quot; the ControlsBindingText.cs - <em>StartRebinding()</em> function is called. </p>
+    <pre><code>    <span class="hljs-meta">public</span> void StartRebinding()
+        {
+            objectText.text = empty<span class="hljs-comment">;</span>
+            bindingAction.Disable()<span class="hljs-comment">;</span>
+            if (keyboardDisplayStatus)
+            {
+                rebindingOperation = bindingAction.PerformInteractiveRebinding(keyboardBindingIndex)
+    <span class="hljs-meta">                    .WithControlsExcluding</span>(<span class="hljs-string">"Mouse"</span>)
+    <span class="hljs-meta">                    .WithControlsExcluding</span>(<span class="hljs-string">"Gamepad"</span>)
+    <span class="hljs-meta">                    .OnMatchWaitForAnother</span>(<span class="hljs-number">0.</span>1f)
+    <span class="hljs-meta">                    .OnComplete</span>(operation =&gt; RebindComplete())
+    <span class="hljs-meta">                    .Start</span>()<span class="hljs-comment">;</span>
+            }
+            else
+            {
+                rebindingOperation = bindingAction.PerformInteractiveRebinding(gamepadBindingIndex)
+    <span class="hljs-meta">                .WithControlsExcluding</span>(<span class="hljs-string">"Mouse"</span>)
+    <span class="hljs-meta">                .WithControlsExcluding</span>(<span class="hljs-string">"Keyboard"</span>)
+    <span class="hljs-meta">                .OnMatchWaitForAnother</span>(<span class="hljs-number">0.</span>1f)
+    <span class="hljs-meta">                .OnComplete</span>(operation =&gt; RebindComplete())
+    <span class="hljs-meta">                .Start</span>()<span class="hljs-comment">;</span>
+            }
+        }
+    </code></pre><p>The most confusing part of this script are the <em>bindingId</em>&#39;s and <em>bindingIndex</em>&#39;s. Essentially for the new Unity Input System every binding for an &quot;Action&quot; has a unique ID associated with it. I entered these ID&#39;s from the UI into the public string field in their corresponding <strong>ControlsBindingText.cs</strong> objects so they remapped the correct Action binding in the Unity Input Action asset. The only way I can get all the bindings on an Action is as an Array so I also track which &quot;Index&quot; in that Actions &quot;Bindings&quot; array each of those Id&#39;s matches. </p>
+    <p>Hopefully the script makes more sense than that paragraph.</p>
+    <h3 id="saving-the-controls">Saving the Controls</h3>
+    <p>The <strong>PlayerSettings.cs</strong> (Singleton) script has a public reference to the <strong>PlayerInput</strong> asset that holds the new Unity Input System config. </p>
+    <p>It leverages the PlayerInput asset to save bindings as Json in string form.</p>
+    <pre><code>string rebinds = playerInput.actions.SaveBindingOverridesAsJson()<span class="hljs-comment">;</span>
+    PlayerPrefs.SetString(playerBindings, rebinds)<span class="hljs-comment">;</span>
+    PlayerPrefs.Save()<span class="hljs-comment">;</span>
+    </code></pre><p>It then can also override the current PlayerInput asset with a saved config. </p>
+    <p><code>PlayerInputSingleton.Instance.gameObject.GetComponent&lt;PlayerInput&gt;().actions.LoadBindingOverridesFromJson(controlDefaultBindings);</code></p>
+    <h3 id="mouse-input-handling">Mouse Input Handling</h3>
+    <p>My <strong>InputAction</strong> map of player inputs has simple &quot;point&quot; and &quot;click&quot; actions that pass <code>InputAction.CallbackContext</code>&#39;s to my <code>PlayerInputHandler</code>. </p>
+    <p>My <code>PlayerInputHandler</code> converts the context location to the in game coordinates. </p>
+    <p><code>pointerLocation = cachedMainCamera.ScreenToWorldPoint(inputValue);</code></p>
+    <p>And then my <strong>SceneController</strong> determines what to do if that portion of the screen has been &quot;hovered over&quot; or &quot;clicked&quot;. </p>
+    <p><code>currentSceneController.Point(cachedPointerLocation);</code></p>
+    <pre><code><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Point</span><span class="hljs-params">(Vector2 pointerLocation)</span>
+        </span>{
+            Vector2Int pointAnalysis = Util.ReturnPositionFromMouse(pointerLocation, menuLayer, sceneClickables);
+    </code></pre><p>You will see in my SceneController - &quot;MainMenuController&quot; I do &quot;analysis&quot; on the mouse input to determine if any gameObject matches mouse input. For every scene I have every selectable located on a x,y grid with different layers for menus. </p>
+    <p>Here are some example defined clickables/hoverables on my MainMenu.</p>
+    <pre><code>    <span class="hljs-comment">// xbounds (left to right), ybounds (bottom to top), layer, row, col</span>
+        <span class="hljs-comment">// layer 1</span>
+        private List&lt;<span class="hljs-type">float</span>&gt; playButton = new List&lt;<span class="hljs-type">float</span>&gt;() { <span class="hljs-number">-4</span>f, <span class="hljs-number">4</span>f, <span class="hljs-number">-1.5</span>f, <span class="hljs-number">1.5</span>f, <span class="hljs-number">1</span>f, <span class="hljs-number">1</span>f, <span class="hljs-number">1</span>f };
+        private List&lt;<span class="hljs-type">float</span>&gt; settingsButton = new List&lt;<span class="hljs-type">float</span>&gt;() { <span class="hljs-number">-4</span>f, <span class="hljs-number">4</span>f, <span class="hljs-number">-5.5</span>f, <span class="hljs-number">-2.5</span>f, <span class="hljs-number">1</span>f, <span class="hljs-number">2</span>f, <span class="hljs-number">1</span>f};
+        <span class="hljs-comment">// layer 2</span>
+        private List&lt;<span class="hljs-type">float</span>&gt; musicVolume = new List&lt;<span class="hljs-type">float</span>&gt;() { <span class="hljs-number">4.6</span>f, <span class="hljs-number">14.6</span>f, <span class="hljs-number">4.65</span>f, <span class="hljs-number">6.65</span>f, <span class="hljs-number">2</span>f, <span class="hljs-number">1</span>f, <span class="hljs-number">1</span>f };
+        private List&lt;<span class="hljs-type">float</span>&gt; musicVolumeIncrease = new List&lt;<span class="hljs-type">float</span>&gt;() { <span class="hljs-number">14.61</span>f, <span class="hljs-number">16.6</span>f, <span class="hljs-number">4.65</span>f, <span class="hljs-number">6.65</span>f, <span class="hljs-number">2</span>f, <span class="hljs-number">1</span>f, <span class="hljs-number">2</span>f };
+    </code></pre><p>So I do an analysis on the click location where I take the current menu layer and click location and see if it matches any of my predefined scene clickables. If it matches I can take appropriate action on click or hover. </p>
+    <p>This is just one simplistic way to handle mouse/touch input that would only work if you have static/unmoving clickables in your scene. But hopefully it can inspire you for creating a system for managing your own mouse input that is adaptable to your design needs.</p>
+    <h1 id="player-settings">Player Settings</h1>
+    <p>The <strong>PlayerSettings.cs</strong> (Singleton) script is pretty self explanatory. It utilizes Unity <code>PlayerPrefs</code> to Save/Load player settings. And contains a bunch of helper methods to retrieve/set those saved settings.</p>
+    <h3 id="settings-managed">Settings managed</h3>
+    <ol>
+    <li>Music Volume</li>
+    <li>Effects Volume</li>
+    <li>Language Chosen</li>
+    <li>Player Control Mapping</li>
+    </ol>
+    <h1 id="audio">Audio</h1>
+    <p>The Audio system is also pretty self explanatory. The <strong>AudioManager</strong> game object (Singleton) contains 9 <em>Audio Source</em> components. The first Audio Source is dedicated to music. And the subsequent 8 are for sound effects. The <strong>AudioManager.cs</strong> script on the <em>AudioManager</em> game object is accessed from anywhere to play clips, and it cycles through the array of Audio Sources configuring and playing them. It sets their volume based on Player Settings. It also contains some cached sounds used often.  </p>
+    <h1 id="localization">Localization</h1>
+    <h4 id="helpful-links">Helpful Links</h4>
+    <ol>
+    <li><a style="color: blueviolet; font-weight: bold;" target="_blank" rel="noopener noreferrer" href="https://youtu.be/c-dzg4M20wY">Game Dev Guide - Youtube tutorial for script that imports localization csv</a></li>
+    <li><a style="color: blueviolet; font-weight: bold;" target="_blank" rel="noopener noreferrer" href="https://youtu.be/pLW2B98W5AU">Zolran - Creating TextMeshPro font asset with fallback fonts for different language characters</a></li>
+    </ol>
+    <p>There are a lot of routes to get dynamic localization for your Unity project. This is a very simple one. This solution takes in a localization spreadsheet. Each column in the spreadsheet corresponds to a different language. And each row is a translation of some text, identifiable by a key in the first column. Make sure that each cell of translation is bookended by quotation marks.</p>
+    <h3 id="languages-used-in-this-starter-kit-project">Languages used in this starter kit project</h3>
+    <ol>
+    <li>English</li>
+    <li>Spanish (obtained through google translate)</li>
+    <li>Simplified Chinese (obtained through google translate)</li>
+    </ol>
+    <p>To use the method in this tool you export your localization spreadsheet as a <em>.csv</em> file and save in the <strong>Resources/</strong> folder. The <strong>CSVLoader.cs</strong> script takes in the spreadsheet and saves all the text in a dictionary with a key for each language. </p>
+    <p>The <strong>LocalizationManager</strong> gameobject / script then grabs each key on the CSVLoader and saves the contents in a language specific dictionary.</p>
+    <pre><code><span class="hljs-attribute">    localizedEN</span> = csvLoader.GetDictionaryValues(<span class="hljs-string">"en"</span>);
+    <span class="hljs-attribute">    localizedES</span> = csvLoader.GetDictionaryValues(<span class="hljs-string">"es"</span>);
+    <span class="hljs-attribute">    localizedSC</span> = csvLoader.GetDictionaryValues(<span class="hljs-string">"sc"</span>);
+    </code></pre><p>Now by using the key for the text field you want to get the localized text for, you can query the LocalizationManager to get the string you seek.</p>
+    <pre><code><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">string</span> <span class="hljs-title">GetLocalizedValue</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> key</span>)
+    </span>{
+        <span class="hljs-keyword">if</span> (!isInit) { Init(); }
+
+        <span class="hljs-keyword">string</span> <span class="hljs-keyword">value</span> = key;
+        <span class="hljs-keyword">switch</span> (curLanguage)
+        {
+            <span class="hljs-keyword">case</span> Language.English:
+                localizedEN.TryGetValue(key, <span class="hljs-keyword">out</span> <span class="hljs-keyword">value</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> Language.Spanish:
+                localizedES.TryGetValue(key, <span class="hljs-keyword">out</span> <span class="hljs-keyword">value</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> Language.SimplifiedChinese:
+                localizedSC.TryGetValue(key, <span class="hljs-keyword">out</span> <span class="hljs-keyword">value</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">default</span>:
+                localizedEN.TryGetValue(key, <span class="hljs-keyword">out</span> <span class="hljs-keyword">value</span>);
+                <span class="hljs-keyword">break</span>;
+        }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">value</span>;
+        }
+        </code></pre><p>Every text object in the project has a <strong>LocalizedText.cs</strong> script assigned that calls the <strong>LocalizationManager</strong> to get it&#39;s text localized to the current selected language. </p>
+        <h3 id="handling-different-language-characters">Handling different language characters</h3>
+        <p>When I first implemented this localization system all of the chinese characters for Simplified Chinese language chosen were displayed as squares. This was because the font asset each TextMeshPro game object was using did not support chinese characters. </p>
+        <p>I decided to import the Google created &quot;Noto Sans&quot; font via <em>.otf</em> files downloaded from Google Fonts. The &quot;Noto&quot; series of fonts is an initiative by google to create a font family that supports almost all known languages. Find all the Noto fonts in the <strong>Assets/Fonts/</strong> folder. I then created TextMeshPro font assets from each of these fonts. Designated the <strong>BASE-Noto Sans-Regular SDF</strong> TextMeshPro font asset as the font asset for every text object. Then edited the <strong>BASE-Noto Sans-Regular SDF</strong> asset to designate it&#39;s <em>Fallback Font Assets</em> to include all the other Noto family font assets (japanese, korean, etc.) so that if it ever didn&#39;t have the language character supported it would search its fallbacks. </p>
+        <h1 id="in-conclusion">In Conclusion</h1>
+        <p>I hope this additional context about the project is helpful! I didn&#39;t want to dive deep into every possible aspect but rather give a surface level overview to the tools presented by the starter kit.</p>
+        <p>Hope this project helps you in some way!</p>
+        <p>Cheers,
+        Ben</p>
+        <p><a href="https://github.com/bthomas2622/unity-2d-starter-kit">GITHUB REPO</a></p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+                <a target="_blank" rel="noopener noreferrer" href="https://freebrunch.itch.io/">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-itch-io fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/freebrunch">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
