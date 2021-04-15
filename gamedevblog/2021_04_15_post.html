@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147640575-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-147640575-1');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ben thomas game development blog">
+  <meta name="author" content="Ben Thomas">
+
+  <title>BT Blog</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        More
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="games.html">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/basic-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Retrospective: Nectar of the Gods</h1>
+            <span class="meta">Posted by
+              <a href="about.html">Ben Thomas</a>
+              on April 15, 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h2>The Game</h2>
+          <img class="img-css-fluid" src="img/nectarBanner.png" alt="nectarBanner">
+          <p>Nectar of the Gods is an unquenchable head-to-head real-time strategy / tower defense game where bugs battle over the finest beverages. You must strategically deploy a chosen bug family, nimbly navigate the countertop, and claim liquid nirvana!</p>
+          <h2>Data</h2>
+          <p><b>Developer:</b> Ben Thomas<br>
+            <b>Publisher:</b> Ben Thomas<br>
+            <b>Release Date:</b> January 27, 2021<br>
+            <b>Platforms:</b> Steam (Windows)<br>
+            <b>Team Size:</b> 1<br>
+            <b>Length of Development:</b> 9 months part time, 6 months full time<br>
+            <b>Development Tools:</b> Unity 2020 Engine, Krita (Art + Animation), Audacity (Sound + Music), Trello (Project Management)<br>
+            </p>
+          <h2>Goals</h2>
+          <ul>
+            <li>Make a polished commercial multiplayer game inspired by chess and starcraft that challenged the player and let them play with their friends online.</li>
+            <li>Learn every facet of what is required to launch a game: coding, art, animation, netcode, sound, promotion/marketing, trailer.</li>
+            <li>Build the foundation for cool future projects.</li>
+          </ul>
+          <h2>What went right?</h2>
+          <p>I finished the game! It is fun, playable, and feature complete. I made respectable cheerful art. The game has personality. It is not loaded with coding bugs.</p>
+          <p>I learned so much from the experience and feel confident I could make a number of game projects much faster with the experience I now have.</p>
+          <p>I am proud that I committed to and finished a project that took greater than a year. It takes great dedication to push through the grindy months.</p>
+          <p>I contracted the music from friends of a friend. They were incredibly fun to work with and the music turned out fantastic.</p>
+          <p>Releasing the game on one platform, Steam, ended up being the right call. As a solo developer trying to support multiple platforms I would have been stretched unsustainably thin, especially for a multiplayer game.</p>
+          <p>Facepunch.Steamworks, an open source C# wrapper of the Steamworks API worked like a charm and let me implement my online multiplayer entirely through Steam’s services.</p>
+          <p>Almost 3 months after release <b>5848</b> people have added the game on steam and <b>1591</b> unique players have played the game. A decent audience for a first time solo developer.</p>
+          <h2>What went wrong?</h2>
+          <p></p>
+          <h4>Realtime Multiplayer</h4>
+          <p>Independent developers, especially solo ones, are often discouraged from making online multiplayer games due to the complexity online multiplayer brings that would take resources away from adding more content to the game. I am happy I ignored this advice because multiplayer experiences drive me, but I absolutely regret not doing a turn based game.</p>
+          <p>I went with P2P (peer-to-peer) networking as a small time developer rather than paying for dedicated servers. This combined with realtime multiplayer in the game created latency issues I could not overcome. If the multiplayer was turn based and did not require split second timing I could have overcome the limitations of P2P networking rather than ship a game with subpar multiplayer experience. The game is certainly very playable, the latency can sometimes cause a desync of game state between the two players, a nightmare for a game that is entirely centered around competitive head-to-head realtime competition.</p>
+          <h4>Free-to-play / Revenue</h4>
+          <p>The free-to-play model of the game is you get access to the entire game for free with only 1 of the 3 playable bug families. In the $12.99 bug pack DLC you get “The Hive” and “Spidey Party”. These final two bug families add 16 unique bugs and create the “rock-paper-scissors” dynamic between the 3 playable factions inspired by starcraft.</p>
+          <p>I modeled by business plan off of multiplayer games I know and love. Free-to-play games like League of Legends, Apex Legends, Teamfight Tactics, Hearthstone, etc. I felt like I understood that a multiplayer game is as good as the strength of its community and going free-to-play helps grow that community. People will jump in due to the low barrier of entry, fall in love with the game, and spend money afterwards to enrich the experience.</p>
+          <p>What I did not consider is how many successful free-to-play indie games are out there? Does the audience for competitive multiplayer free-to-play games expect a huge amount of polish and support for the games they decide to invest in?</p>
+          <p>My game did not “take off”, and even though a lot of people played it, very very few purchased the full experience. After excluding reviewers and friends, roughly 5 in ~1600 players spent $12.99 to unlock the full experience.</p>
+          <p>I should have tailored my business plan to a smaller group of enthusiasts rather than copying the model of industry titans.</p>
+          <h4>Press Coverage</h4>
+          <p>Like revenue, I did feel like I had realistic expectations as a first time indie developer. But that doesn’t mean there weren’t things I could have done better.</p>
+          <p>I had an amazing free PR service through Post Horn PR who sent out a press release with codes to like 100 outlets and influencers. But not a single one covered my game. I think a part of that was that it was a small time game that didn’t look that interesting. But what I found in my later outreach is people are MUCH MUCH more likely to cover your game if you send them a personalized message on why you think the game would be a good fit for them. I was pretty burnt out but if I put more effort in this area I would have gotten better results.</p>
+          <p>I also found a lot of success on the “Woovit” platform getting smaller influencers to cover my game just by posting codes.</p>
+          <h4>I never found a game dev "community"</h4>
+          <p>This one is a little abstract. A big part of me wanting to make a game was to connect with people who made games. To join a like minded network of people who were equally passionate about games as I was. I wanted to make friends locally attending meetups (covid kinda wrecked this one). After my game was released I wanted to feel some belonging, comradery, and connection with people I respect.</p>
+          <p>But it didn’t really go down that way. My experience developing a commercial game was extremely solitary and somewhat lonely. I was not able to go to meetups with coronavirus starting right when I went full time on the game. And people in the industry/hobby making commercial things didn’t pay me much attention online, twitter, etc.</p>
+          <p>Making a game takes years, I’m not sure how people find partners to hustle with for years on end.</p>
+          <p>I could have done more, been more active on forums, discord, reddit, etc. But when I did participate I felt overwhelmed, like I was shouting into the void, not making a meaningful connection. I was also so tired from working on the game, trying to stay healthy, putting time into my personal life that I didn’t have a lot left over for the internet.</p>
+          <h4>Controller Support</h4>
+          <p>I spent a great deal of time making the game completely playable with only a controller because I personally like playing PC games with a controller. And I am happy it’s there for accessibility. But boy oh boy do the Steam stats show that hardly anybody plays the game with a controller. I just don’t think it’s the first option for fans of PC strategy games.</p>
+          <h2>Art</h2>
+          <p>I am so proud of the way the art turned out. I have no formal art training, and have made very little visual art in my life. But with just a drawing tablet and a commitment to a simple style I could visualize in my head I was able to create some striking albeit amateurish art. Get a feel for it in the <a href="https://youtu.be/oaFosKnbZpM.">launch trailer</a> for the game.</p>
+          <h2>Risk Management</h2>
+          <p>I limited risk by:</p>
+          <ul>
+            <li>Making the game solo, reducing dependencies, costs, and complications.</li>
+            <li>Keeping the game small, making a commercial game in about a year is somewhat reasonable compared to the much longer development cycles of other games.</li>
+            <li>I created the initial prototype while I was working full time, so I knew I had something I was passionate about before I fully committed to it.</li>
+          </ul>
+          <p>The riskiest part about this endeavour was that I quit my job to work on the game full time. I did not expect by any means to recoup my lost income. Part of making a game was just the joy of doing it and learning, not motivated by money.</p>
+          <p>I got the fulfillment, but the game has less than $200 of revenue in 3 months. I was prepared for the game to make little money but oof this one stings and takes a bit of wind out of the sails considering how much time I spent polishing to make a commercial product.</p>
+          <h2>Mid-Project Changes</h2>
+          <p>A few months into the project I bailed on any meaningful single player content. It would have taken the game twice as long to come out. And would significantly increase the amount of art the game would require. This was problematic because as a new artist my workflow was very slow and something I only enjoyed in smaller spurts. I am happy with this decision because even though some people would have enjoyed a campaign, I was far more driven by the action online.</p>
+          <p>At the very end of the project, about a week before launch, I retested the MacOS online version of the game, a version that had never had any issues, and it was not working. I have zero idea why it stopped working. Throughout the process I had not had to put any additional time into the MacOS support I just had to export “as Mac”. But it was a huge bummer. I did not have the bandwidth to figure it out since Mac is such a small portion of PC gamers. And just like that Mac support was lost :(</p>
+          <h2>Summary of Lessons Learned</h2>
+          <ol>
+            <li>If you are going to save money and time with Peer-to-Peer multiplayer make the game TURN BASED, not realtime.</li>
+            <li>Making a game free-to-play to get more players does not equate at all to any predictable amount of revenue. Not every game is League of Legends.</li>
+            <li>I learned I enjoy programming and design more than art and music. This was a really valuable lesson because if I try to do another 1+ year game development cycle I am much more likely to burn out if I need to do a lot of art and music.</li>
+            <li>Making games doesn’t mean you automatically get to gain a bunch of friends who make games.</li>
+            <li>Steam is really powerful, I was constantly impressed by the Steamworks API and the detail that goes into a Store page.</li>
+            <li>Even though I read and watched countless guides on BizDev for indie games, and learned and applied a lot of it, it was nowhere near enough to reach real eyeball volume.</li>
+          </ol>
+          <h2>Conclusion</h2>
+          <p>I am proud of Nectar of the Gods. It feels like a tremendous personal achievement. I really enjoyed playing it with friends and seeing some internet strangers review it. I am not sure what my future in game development looks like. I don’t think I could lone wolf another super long project, it's just not my nature. But I’ll always be on the hunt for ways to engage with gaming and eSports. Games are my life passion. Thanks for reading!</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+                <a href="https://freebrunch.itch.io/">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-itch-io fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/freebrunch">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
