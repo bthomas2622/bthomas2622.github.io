@@ -5,6 +5,8 @@ This my portfolio of coding and creative projects. It also contains the projects
 
 # Selected Projects
 
+* Nectar of the Gods
+* GameDev Blog
 * GTFS Lab
 * Space Canoe
 * Bee Game
