@@ -42,7 +42,10 @@
             $(document).ready(function () {
                 $("div").on('click','#notgPic',function () {
                     $('#notg').modal('show'); 
-                });   
+                });
+                $("div").on('click','#blPic',function () {
+                    $('#bread-log').modal('show'); 
+                });      
                 $("div").on('click','#gtfsPic',function () {
                     $('#gtfs').modal('show'); 
                 });   
@@ -78,7 +81,10 @@
                 }); 
                 $("div").on('click','#unityStarterKitPic',function () {
                     $('#unity-starter').modal('show'); 
-                });   
+                });
+                $("div").on('click','#breadLog',function () {
+                    $('#bread-log').modal('show'); 
+                });      
             });
         </script>
     </head>
@@ -118,6 +124,12 @@
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#notg">Nectar of the Gods</btn>
                     </div>    
                     <img class="img-fluid image" src="images/projects/healthHive16x9.png" alt="Nectar of the Gods" id="notgPic">
+                </div>
+                <div class="mb-3 pics animation all 2">
+                    <div class="pic-modal" id="breadLog">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#bread-log">Bread Log</btn>
+                    </div>    
+                    <img class="img-fluid image" src="images/projects/seededsourdough.jpg" alt="Bread Log" id="blPic">
                 </div>
                 <div class="mb-3 pics animation all 4">
                     <div class="pic-modal" id="gtfsButton">
@@ -211,6 +223,26 @@
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>
+                </div>
+            </div>
+            <!-- Bread Log -->
+            <div class="modal fade" id="bread-log" tabindex="-1" role="dialog" aria-labelledby="bread-log" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a target="_blank" href="https://bthomas2622.github.io/bread-log/">Bread Log</a></h3>
+                        <p class="description">Bread Log is my Sourdough Blog. A wheaty harvest of recipe reactions, learnings, reviews and crumb comparisons. Built with <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>. Theme <a target="_blank" href="https://github.com/jekyll/minima">Minima</a>. Hosted on <a target="_blank" href="https://pages.github.com/">GitHub Pages</a>.</p>
+                        <p class="description"><a target="_blank" href="https://bthomas2622.github.io/bread-log/">Blog</a> | <a target="_blank" href="https://github.com/bthomas2622/bread-log">Github</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
                 </div>
             </div>
             <!-- Blog -->
