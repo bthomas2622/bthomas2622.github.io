@@ -85,6 +85,9 @@
                 $("div").on('click','#breadLog',function () {
                     $('#bread-log').modal('show'); 
                 });      
+                $("div").on('click','#discordPic',function () {
+                    $('#discord-bot').modal('show'); 
+                });  
             });
         </script>
     </head>
@@ -119,6 +122,12 @@
         <hr/>
         <div class="container">
             <div class="gallery mt-3" id="gallery">
+                <div class="mb-3 pics animation all 4">
+                    <div class="pic-modal" id="discordBot">
+                        <btn class="btn btn-dark" data-toggle="modal" data-target="#discord-bot">Discord Bot</btn>
+                    </div>    
+                    <img class="img-fluid image" src="images/discordimage.png" alt="Discord Bot" id="discordPic">
+                </div>
                 <div class="mb-3 pics animation all 1">
                     <div class="pic-modal" id="notgButton">
                         <btn class="btn btn-dark" data-toggle="modal" data-target="#notg">Nectar of the Gods</btn>
@@ -205,6 +214,26 @@
                 </div>
             </div>
             <!-- Modals -->
+            <!-- Discord Bot -->
+            <div class="modal fade" id="discord-bot" tabindex="-1" role="dialog" aria-labelledby="discord-bot" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3><a target="_blank" href="https://github.com/bthomas2622/freeBrunch-discord-bot">Discord Bot</a></h3>
+                        <p class="description">Discord Bot I created for Discord Server with friends that tracks game rankings, posts free games, pulls game information, and other fun commands. See <a target="_blank" href="https://github.com/bthomas2622/freeBrunch-discord-bot/blob/main/README.md">README</a> for full list of bot features! Built with <a target="_blank" href="https://discord.js.org/#/">discordjs</a>, hosted on Raspberry Pi 4, utilizes a variety of game APIs.</p>
+                        <p class="description"><a target="_blank" href="https://github.com/bthomas2622/freeBrunch-discord-bot">GitHub</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
             <!-- NotG -->
             <div class="modal fade" id="notg" tabindex="-1" role="dialog" aria-labelledby="notg" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
